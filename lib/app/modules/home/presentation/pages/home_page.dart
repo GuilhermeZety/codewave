@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:landing_page/app/core/common/constants/app_assets.dart';
 import 'package:landing_page/app/core/common/extensions/widget_extension.dart';
@@ -30,7 +29,7 @@ class _HomePageState extends State<HomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Center(
         child: CustomScrollView(
-          controller: Modular.get<ScrollController>(),
+          controller: homeScrollController,
           slivers: [
             SliverList(
               delegate: SliverChildListDelegate(
@@ -57,3 +56,5 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+ScrollController homeScrollController = ScrollController();

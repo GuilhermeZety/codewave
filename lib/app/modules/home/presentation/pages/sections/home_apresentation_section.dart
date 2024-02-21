@@ -1,14 +1,15 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flextras/flextras.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:landing_page/app/core/common/constants/app_assets.dart';
 import 'package:landing_page/app/core/common/constants/app_colors.dart';
 import 'package:landing_page/app/core/common/constants/app_fonts.dart';
 import 'package:landing_page/app/core/common/extensions/context_extension.dart';
 import 'package:landing_page/app/core/common/extensions/widget_extension.dart';
+import 'package:landing_page/app/modules/home/presentation/pages/home_page.dart';
 import 'package:landing_page/app/ui/components/button.dart';
 import 'package:landing_page/app/ui/components/continue_indicator.dart';
 import 'package:landing_page/app/ui/components/social_media.dart';
@@ -57,7 +58,7 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
                 right: 0,
                 child: ContinueIndicator(
                   onTap: () {
-                    Modular.get<ScrollController>().animateTo(context.height - 100, duration: 300.ms, curve: Curves.easeInBack);
+                    homeScrollController.animateTo(context.height - 100, duration: 300.ms, curve: Curves.easeInBack);
                   },
                 ),
               ),
@@ -87,7 +88,7 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
         crossAxisAlignment: isNotDesktop ? CrossAxisAlignment.center : CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          SelectableText(
+          AutoSizeText(
             'Transformando ideias\nem soluções',
             style: const TextStyle(
               fontSize: 46,
@@ -95,9 +96,8 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
               color: AppColors.grey_600,
             ),
             textAlign: isNotDesktop ? TextAlign.center : TextAlign.start,
-            maxLines: 2,
           ).expandedH(),
-          SelectableText(
+          AutoSizeText(
             'Surfe na Onda da Tecnologia com a CodeWave Systems',
             style: const TextStyle(
               fontSize: 24,
@@ -122,7 +122,7 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
           Column(
             crossAxisAlignment: isNotDesktop ? CrossAxisAlignment.center : CrossAxisAlignment.start,
             children: [
-              SelectableText(
+              AutoSizeText(
                 'Você também nos acha nas nossas redes',
                 style: const TextStyle(
                   fontSize: 16,
@@ -139,7 +139,7 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
           ),
         ],
       ).pH(24),
-    ).animate().fade().slideX(begin: -0.2, end: 0.0);
+    ).animate().fade().slideY(begin: -0.2, end: 0.0);
   }
 
   Widget get _appBar => Row(

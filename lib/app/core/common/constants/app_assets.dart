@@ -13,7 +13,7 @@ class _AppImages {
 }
 
 class AppSvgs {
-  static const String _path = 'assets/svgs/';
+  static const String _path = 'assets/';
 
   final String logo = '${_path}logo.svg';
   final String longLogo = '${_path}long_logo.svg';
