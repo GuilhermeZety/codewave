@@ -1,0 +1,49 @@
+name: landing_page
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_animate: ^4.5.0
+  flutter_modular: ^6.3.2
+  flutter_vibrate: ^1.3.0
+  toastification: ^1.2.1
+  url_strategy: ^0.2.0
+  loading_animation_widget: ^1.2.0+4
+  gap: ^3.0.1
+  flutter_svg: ^2.0.10+1
+  flextras: ^1.0.0
+  auto_size_text: ^3.0.0
+  animated_text_kit: ^4.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/svgs/
+
+  fonts:
+    - family: Segoe UI
+      fonts:
+        - asset: assets/fonts/SegoeUI-Light.ttf
+          weight: 200
+        - asset: assets/fonts/SegoeUI.ttf
+          weight: 400
+        - asset: assets/fonts/SegoeUI-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/SegoeUI-Bold.ttf
+          weight: 700
+  
