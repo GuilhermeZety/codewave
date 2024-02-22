@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:gap/gap.dart';
 import 'package:landing_page/app/core/common/constants/app_colors.dart';
+import 'package:landing_page/app/core/common/constants/app_fonts.dart';
 import 'package:landing_page/app/core/common/extensions/color_extension.dart';
 import 'package:landing_page/app/core/common/utils/toasting.dart';
-import 'package:landing_page/app/core/common/utils/vibrate.dart';
 import 'package:landing_page/app/ui/components/loader.dart';
 
 // Custom buttons are created by extending the MaterialButton class
@@ -56,7 +55,7 @@ class Button extends StatefulWidget {
           backgroundColor: (disabled ? AppColors.primary.withOpacity(0.3) : color ?? AppColors.primary).toMaterialStateProperty(),
           foregroundColor: AppColors.white.toMaterialStateProperty(),
           textStyle: MaterialStateProperty.all<TextStyle?>(
-            const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            const TextStyle(color: Colors.white, fontWeight: AppFonts.bold, fontFamily: AppFonts.globalFont),
           ),
           padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
             padding,
@@ -196,7 +195,7 @@ class Button extends StatefulWidget {
               side: bordered ? const BorderSide(color: AppColors.primary, width: 2) : BorderSide.none,
             ),
           ),
-          elevation: MaterialStateProperty.all<double>(disabled ? 0 : 2),
+          elevation: MaterialStateProperty.all<double>(0),
           backgroundColor: (disabled ? AppColors.white.withOpacity(0.5) : color ?? AppColors.white).toMaterialStateProperty(),
           foregroundColor: AppColors.primary.toMaterialStateProperty(),
           textStyle: MaterialStateProperty.all<TextStyle?>(
@@ -226,7 +225,6 @@ class _ButtonState extends State<Button> {
         if (!mounted) return;
         setState(() {});
 
-        vibrate(FeedbackType.light);
         await widget.onPressed!();
 
         isLoading = false;
@@ -269,7 +267,6 @@ class _ButtonState extends State<Button> {
           ? null
           : () {
               if (widget.onLongPress != null) {
-                vibrate(FeedbackType.light);
                 widget.onLongPress!();
               }
             },

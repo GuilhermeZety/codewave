@@ -10,6 +10,7 @@ class _AppImages {
 
   final String macFrame = '${_path}mac_frame.png';
   final String phoneFrame = '${_path}phone_frame.jpg';
+  final String longLogo = '${_path}long_logo.png';
 }
 
 class AppSvgs {

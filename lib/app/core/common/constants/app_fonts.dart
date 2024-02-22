@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppFonts {
-  static String globalFont = 'Segoe UI';
+  static const String globalFont = 'Segoe UI';
 
   static const FontWeight light = FontWeight.w200;
   static const FontWeight normal = FontWeight.w400;

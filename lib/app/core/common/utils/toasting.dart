@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:landing_page/app/core/common/extensions/all_extension.dart';
-import 'package:landing_page/app/core/common/utils/vibrate.dart';
 import 'package:toastification/toastification.dart';
 
 class Toasting {
@@ -15,7 +13,6 @@ class Toasting {
     ToastificationStyle? style = ToastificationStyle.flat,
     StackTrace? stackTrace,
   }) {
-    vibrate(FeedbackType.error);
     Toastification().show(
       context: context,
       type: ToastificationType.error,
@@ -50,7 +47,6 @@ class Toasting {
     ToastificationStyle? style = ToastificationStyle.flat,
     StackTrace? stackTrace,
   }) {
-    vibrate(FeedbackType.success);
     Toastification().show(
       context: context,
       type: ToastificationType.success,
@@ -80,7 +76,6 @@ class Toasting {
     String? message,
     Duration? duration,
   }) {
-    vibrate(FeedbackType.error);
     error(
       context,
       title: 'Sem conexão com a internet!',
@@ -99,7 +94,6 @@ class Toasting {
     ToastificationStyle? style = ToastificationStyle.flat,
     StackTrace? stackTrace,
   }) {
-    vibrate(FeedbackType.warning);
     Toastification().show(
       context: context,
       type: ToastificationType.warning,

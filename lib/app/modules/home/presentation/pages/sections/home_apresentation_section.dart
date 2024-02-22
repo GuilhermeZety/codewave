@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flextras/flextras.dart';
 import 'package:flutter/material.dart';
@@ -13,58 +16,89 @@ import 'package:landing_page/app/modules/home/presentation/pages/home_page.dart'
 import 'package:landing_page/app/ui/components/button.dart';
 import 'package:landing_page/app/ui/components/continue_indicator.dart';
 import 'package:landing_page/app/ui/components/social_media.dart';
+import 'package:landing_page/main.dart';
 
 class HomeApresentationSection extends StatefulWidget {
-  const HomeApresentationSection({super.key, required this.maxWidth});
+  const HomeApresentationSection({
+    super.key,
+    required this.maxWidth,
+  });
   final double maxWidth;
   @override
   State<HomeApresentationSection> createState() => _HomeApresentationSectionState();
 }
 
 class _HomeApresentationSectionState extends State<HomeApresentationSection> {
-  double get getMarginWidth => (context.width - widget.maxWidth) < 0 ? 0 : (context.width - widget.maxWidth) / 2;
+  String title1Text = '';
+  String subTitle1Text = '';
+  String buttonText = '';
+
+  @override
+  void initState() {
+    title1Text = config.getString('TITULO_1');
+    subTitle1Text = config.getString('SUBTITULO_1');
+    buttonText = config.getString('BUTTON_1');
+    if (mounted) setState(() {});
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: context.width,
-      height: context.height,
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          return Stack(
-            children: [
-              if (!(context.isMobile || context.isTablet)) _decoration1,
-              if (!(context.isMobile || context.isTablet)) _decoration2,
-              _appBar,
-              Center(
-                child: Row(
-                  mainAxisAlignment: context.isMobile || context.isTablet ? MainAxisAlignment.center : MainAxisAlignment.start,
-                  children: [
-                    _mainContent.pLeft(getMarginWidth),
-                    if ((!context.isMobile && !context.isTablet))
-                      SizedBox(
-                        width: context.width / 2,
-                        height: context.height / 1.5,
-                        child: Image.asset(
-                          AppAssets.images.macFrame,
+    return ConstrainedBox(
+      constraints: BoxConstraints(maxWidth: widget.maxWidth),
+      child: Center(
+        child: Column(
+          children: [
+            Container(
+              constraints: const BoxConstraints(
+                maxHeight: 1000,
+              ),
+              height: context.height - 60,
+              child: LayoutBuilder(
+                builder: (context, contraints) {
+                  return Stack(
+                    children: [
+                      Center(
+                        child: Row(
+                          children: [
+                            _mainContent,
+                          ],
                         ),
-                      ).animate().fade(),
-                  ],
-                ),
+                      ),
+                      Positioned(
+                        bottom: 24,
+                        right: 24,
+                        left: 24,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ContinueIndicator(
+                              onTap: () async {
+                                log('1');
+                                Timer(const Duration(milliseconds: 50), () {
+                                  homeScrollController.animateTo(
+                                    context.height - 100,
+                                    curve: Curves.easeInCirc,
+                                    duration: const Duration(milliseconds: 750),
+                                  );
+                                });
+                                // await homeScrollController.animateTo(
+                                //   (contraints.maxHeight - 100),
+                                //   duration: const Duration(milliseconds: 5000),
+                                //   curve: Curves.easeInBack,
+                                // );
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  );
+                },
               ),
-              Positioned(
-                bottom: 24,
-                left: 0,
-                right: 0,
-                child: ContinueIndicator(
-                  onTap: () {
-                    homeScrollController.animateTo(context.height - 100, duration: 300.ms, curve: Curves.easeInBack);
-                  },
-                ),
-              ),
-            ],
-          );
-        },
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -80,7 +114,7 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
             ? 1000
             : isTablet
                 ? 700
-                : 400,
+                : 500,
       ),
       width: context.width,
       child: SeparatedColumn(
@@ -89,16 +123,17 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
         mainAxisSize: MainAxisSize.min,
         children: [
           AutoSizeText(
-            'Transformando ideias\nem soluções',
+            title1Text,
             style: const TextStyle(
-              fontSize: 46,
+              fontSize: 42,
               fontWeight: AppFonts.bold,
               color: AppColors.grey_600,
             ),
+            maxLines: 2,
             textAlign: isNotDesktop ? TextAlign.center : TextAlign.start,
           ).expandedH(),
           AutoSizeText(
-            'Surfe na Onda da Tecnologia com a CodeWave Systems',
+            subTitle1Text,
             style: const TextStyle(
               fontSize: 24,
               fontWeight: AppFonts.normal,
@@ -112,7 +147,7 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
                 onPressed: () async {
                   //TODO:
                 },
-                child: const Text('Eu Quero Uma Solução!'),
+                child: Text(buttonText),
               );
 
               if (isMobile) return button.expandedH();
@@ -139,49 +174,9 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
           ),
         ],
       ).pH(24),
-    ).animate().fade().slideY(begin: -0.2, end: 0.0);
+    ).animate().fade().slideY(begin: 0.2, end: 0.0);
   }
 
-  Widget get _appBar => Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            constraints: BoxConstraints(maxWidth: widget.maxWidth),
-            width: context.width,
-            child: Row(
-              children: [
-                SvgPicture.asset(
-                  AppAssets.svgs.longLogo,
-                  height: 35,
-                  width: 146,
-                ),
-                const Spacer(),
-                if (!context.isMobile) ...[
-                  Button.third(
-                    onPressed: () async {
-                      //
-                    },
-                    child: const Text('Sobre'),
-                  ),
-                  const Gap(50),
-                ],
-                Button.inverted(
-                  onPressed: () async {
-                    //
-                  },
-                  child: const Text('Entre em contato'),
-                ).pRight(context.isMobile || context.isTablet ? 0 : 40),
-              ],
-            ).pH(24),
-          ).pTop(16),
-        ],
-      );
-
-  Positioned get _decoration1 => Positioned(
-        top: 0,
-        right: getMarginWidth - 120,
-        child: SvgPicture.asset(AppAssets.svgs.decoration_1).animate().fade().slideX(begin: 0.2, end: 0.0),
-      );
   Positioned get _decoration2 => Positioned(
         top: 0,
         bottom: 0,
