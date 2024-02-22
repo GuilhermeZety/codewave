@@ -1,9 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flextras/flextras.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:landing_page/app/core/common/constants/app_assets.dart';
@@ -24,22 +21,23 @@ class HomeWhatWeDoSection extends StatefulWidget {
 }
 
 class _HomeWhatWeDoSectionState extends State<HomeWhatWeDoSection> {
-  String titleText = '';
-  List<String> texts = [];
-
-  @override
-  void initState() {
-    titleText = config.getString('WHAT_WE_DO_TITLE');
-    texts.add(config.getString('WHAT_WE_DO_TEXT_1'));
-    texts.add(config.getString('WHAT_WE_DO_TEXT_2'));
-    texts.add(config.getString('WHAT_WE_DO_TEXT_3'));
-    texts.add(config.getString('WHAT_WE_DO_TEXT_4'));
-    if (mounted) setState(() {});
-    super.initState();
-  }
+  final String titleText = appTexts.whatWeDoTitle;
+  final List<String> texts = [
+    appTexts.whatWeDoText1,
+    appTexts.whatWeDoText2,
+    appTexts.whatWeDoText3,
+    appTexts.whatWeDoText4,
+  ];
 
   @override
   Widget build(BuildContext context) {
+    double margin = 200;
+    if (context.isTablet) {
+      margin = 80;
+    }
+    if (context.isMobile) {
+      margin = 30;
+    }
     return ConstrainedBox(
       constraints: BoxConstraints(maxWidth: widget.maxWidth),
       child: Center(
@@ -49,100 +47,103 @@ class _HomeWhatWeDoSectionState extends State<HomeWhatWeDoSection> {
               constraints: const BoxConstraints(
                 maxHeight: 1000,
               ),
-              child: LayoutBuilder(
-                builder: (context, contraints) {
-                  return Stack(
+              child: Stack(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Align(
-                        alignment: Alignment.topCenter,
+                      SizedBox(
+                        height: 400,
                         child: SvgPicture.asset(
                           AppAssets.svgs.decoration_4,
-                          width: 700,
+                          height: 400,
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          _mainContent.pTop(60),
-                        ],
-                      ),
+                      ).expanded(),
                     ],
-                  );
-                },
+                  ).pTop(180),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SeparatedColumn(
+                        separatorBuilder: () => const Gap(24),
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Text(
+                            'O que fazemos',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: AppFonts.semiBold,
+                              color: AppColors.blue_400,
+                            ),
+                          ),
+                          ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 880),
+                            child: AutoSizeText(
+                              titleText,
+                              style: const TextStyle(
+                                fontSize: 42,
+                                fontWeight: AppFonts.bold,
+                                color: AppColors.grey_600,
+                              ),
+                              maxLines: 2,
+                              textAlign: TextAlign.center,
+                            ).expandedH(),
+                          ),
+                          ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 950),
+                            child: Column(
+                              children: [
+                                ItemWWD(
+                                  withIndicator: true,
+                                  right: true,
+                                  text: texts[0],
+                                  margin: margin,
+                                ),
+                                ItemWWD(
+                                  withIndicator: true,
+                                  right: false,
+                                  text: texts[1],
+                                  margin: margin,
+                                ),
+                                ItemWWD(
+                                  withIndicator: true,
+                                  right: true,
+                                  text: texts[2],
+                                  margin: margin,
+                                ),
+                                ItemWWD(
+                                  withIndicator: false,
+                                  right: false,
+                                  text: texts[3],
+                                  margin: margin,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ).pH(24).expanded(),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],
         ),
       ),
-    );
+    ).pTop(140);
   }
+}
 
-  Widget get _mainContent {
-    return SeparatedColumn(
-      separatorBuilder: () => const Gap(24),
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const Text(
-          'O que fazemos',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: AppFonts.semiBold,
-            color: AppColors.blue_400,
-          ),
-        ),
-        ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 880),
-          child: AutoSizeText(
-            titleText,
-            style: const TextStyle(
-              fontSize: 42,
-              fontWeight: AppFonts.bold,
-              color: AppColors.grey_600,
-            ),
-            maxLines: 2,
-            textAlign: TextAlign.center,
-          ).expandedH(),
-        ),
-        ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 950),
-          child: Column(
-            children: [
-              item(
-                true,
-                true,
-                texts[0],
-              ),
-              item(
-                true,
-                false,
-                texts[1],
-              ),
-              item(
-                true,
-                true,
-                texts[2],
-              ),
-              item(
-                false,
-                false,
-                texts[3],
-              ),
-            ],
-          ),
-        ),
-      ],
-    ).pH(24).animate().fade(duration: 400.ms).slideY(begin: 0.2, end: 0.0);
-  }
+class ItemWWD extends StatelessWidget {
+  const ItemWWD({super.key, required this.withIndicator, required this.right, required this.text, required this.margin});
+  final bool withIndicator;
+  final bool right;
+  final String text;
+  final double margin;
 
-  Widget item(bool withIndicator, bool right, String text) {
-    double margin = 200;
-    if (context.isTablet) {
-      margin = 80;
-    }
-    if (context.isMobile) {
-      margin = 30;
-    }
+  @override
+  Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -174,6 +175,14 @@ class _HomeWhatWeDoSectionState extends State<HomeWhatWeDoSection> {
           decoration: BoxDecoration(
             color: AppColors.white,
             borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.grey_500.withOpacity(0.3),
+                spreadRadius: 0,
+                blurRadius: 20,
+                offset: const Offset(0, 3), // changes position of shadow
+              ),
+            ],
           ),
           child: Text(
             text,

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flextras/flextras.dart';
@@ -29,70 +28,60 @@ class HomeApresentationSection extends StatefulWidget {
 }
 
 class _HomeApresentationSectionState extends State<HomeApresentationSection> {
-  String titleText = '';
-  String subTitleText = '';
-  String buttonText = '';
-
-  @override
-  void initState() {
-    titleText = config.getString('APRESENTATION_TITLE');
-    subTitleText = config.getString('APRESENTATION_SUBTITLE');
-    buttonText = config.getString('APRESENTATION_BUTTON');
-    if (mounted) setState(() {});
-    super.initState();
-  }
+  String titleText = appTexts.apresentationTitle;
+  String subTitleText = appTexts.apresentationSubtitle;
+  String buttonText = appTexts.apresentationButton;
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(maxWidth: widget.maxWidth),
-      child: Center(
-        child: Column(
-          children: [
-            Container(
-              constraints: const BoxConstraints(
-                maxHeight: 1000,
-              ),
-              height: context.height - 60,
-              child: LayoutBuilder(
-                builder: (context, contraints) {
-                  return Stack(
-                    children: [
-                      Center(
-                        child: Row(
-                          children: [
-                            _mainContent,
-                          ],
-                        ),
+    return Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: widget.maxWidth),
+        child: Center(
+          child: Column(
+            children: [
+              Container(
+                constraints: const BoxConstraints(
+                  maxHeight: 1000,
+                ),
+                height: context.height - 60,
+                child: Stack(
+                  children: [
+                    Center(
+                      child: Row(
+                        children: [
+                          _mainContent,
+                        ],
                       ),
-                      Positioned(
-                        bottom: 24,
-                        right: 24,
-                        left: 24,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ContinueIndicator(
-                              onTap: () async {
-                                log('1');
-                                Timer(const Duration(milliseconds: 50), () {
-                                  homeScrollController.animateTo(
-                                    context.height,
-                                    curve: Curves.easeInCirc,
-                                    duration: const Duration(milliseconds: 750),
-                                  );
-                                });
-                              },
-                            ),
-                          ],
-                        ),
+                    ),
+                    Positioned(
+                      bottom: 24,
+                      right: 24,
+                      left: 24,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ContinueIndicator(
+                            onTap: () async {
+                              Timer(const Duration(milliseconds: 50), () {
+                                homeScrollController.animateTo(
+                                  context.height,
+                                  curve: Curves.easeInCirc,
+                                  duration: const Duration(milliseconds: 750),
+                                );
+                              });
+                            },
+                          ),
+                        ],
                       ),
-                    ],
-                  );
-                },
+                    ),
+                  ],
+                ),
+                //   },
+                // ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

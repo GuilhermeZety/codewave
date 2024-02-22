@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:landing_page/app/core/common/constants/app_theme.dart';
-import 'package:landing_page/app/modules/home/presentation/pages/home_page.dart';
+import 'package:landing_page/app/modules/splash/presentation/pages/splash_page.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
@@ -38,7 +38,7 @@ class _AppWidgetState extends State<AppWidget> {
       darkTheme: AppTheme.light,
       themeMode: ThemeMode.light,
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: const SlpashPage(),
     );
   }
 }

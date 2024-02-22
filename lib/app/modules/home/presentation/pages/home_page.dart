@@ -1,10 +1,8 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gap/gap.dart';
 import 'package:landing_page/app/core/common/constants/app_assets.dart';
 import 'package:landing_page/app/core/common/constants/app_colors.dart';
 import 'package:landing_page/app/core/common/extensions/context_extension.dart';
@@ -12,6 +10,7 @@ import 'package:landing_page/app/core/common/extensions/widget_extension.dart';
 import 'package:landing_page/app/modules/home/presentation/pages/decorations/all_decorations.dart';
 import 'package:landing_page/app/modules/home/presentation/pages/sections/home_app_bar.dart';
 import 'package:landing_page/app/modules/home/presentation/pages/sections/home_apresentation_section.dart';
+import 'package:landing_page/app/modules/home/presentation/pages/sections/home_our_values_section.dart';
 import 'package:landing_page/app/modules/home/presentation/pages/sections/home_what_we_do_section.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,7 +28,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void dispose() {
     streamController.close();
-    log('121');
     super.dispose();
   }
 
@@ -49,6 +47,13 @@ class _HomePageState extends State<HomePage> {
     streamController.add(initialOffset);
     super.initState();
   }
+
+  List<Widget> get sections => [
+        HomeAppBar(maxWidth: maxWidth),
+        HomeApresentationSection(maxWidth: maxWidth),
+        HomeWhatWeDoSection(maxWidth: maxWidth),
+        HomeOurValuesSection(maxWidth: maxWidth).pTop(100),
+      ];
 
   @override
   Widget build(BuildContext context) {
@@ -73,33 +78,33 @@ class _HomePageState extends State<HomePage> {
       body: StreamBuilder<double>(
         stream: textStream,
         builder: (context, snapshot) {
-          return Stack(
-            children: [
-              Stack(
-                children: AllDecorations.decorations(context, snapshot.data ?? 0),
-              ),
-              SingleChildScrollView(
-                key: itemKey,
+          if (context.isNotDesktop) {
+            return SizedBox(
+              width: context.width,
+              height: context.height,
+              child: ListView.builder(
                 controller: homeScrollController,
-                child: SizedBox(
-                  width: context.width,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      HomeAppBar(maxWidth: maxWidth),
-                      HomeApresentationSection(maxWidth: maxWidth),
-                      if ((snapshot.data ?? 0) > 100)
-                        HomeWhatWeDoSection(maxWidth: maxWidth)
-                      else
-                        const SizedBox(
-                          height: 800,
-                        ),
-                      const Gap(300),
-                    ],
-                  ),
-                ),
+                itemBuilder: (context, index) => sections[index],
+                itemCount: sections.length,
               ),
-            ],
+            );
+          }
+          return SizedBox(
+            width: context.width,
+            height: context.height,
+            child: Stack(
+              children: [
+                if (!context.isNotDesktop && snapshot.data != null && (snapshot.data ?? 0) < context.height * 1)
+                  Stack(
+                    children: AllDecorations.decorations(context, snapshot.data ?? 0),
+                  ),
+                ListView.builder(
+                  controller: homeScrollController,
+                  itemBuilder: (context, index) => sections[index],
+                  itemCount: sections.length,
+                ),
+              ],
+            ),
           );
         },
       ),
@@ -108,6 +113,5 @@ class _HomePageState extends State<HomePage> {
 }
 
 ScrollController homeScrollController = ScrollController(initialScrollOffset: initialOffset);
-GlobalKey itemKey = GlobalKey();
 
 double initialOffset = 0;
