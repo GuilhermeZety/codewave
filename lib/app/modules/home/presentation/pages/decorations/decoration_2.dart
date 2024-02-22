@@ -11,7 +11,7 @@ class Decoration2 extends StatelessWidget {
   Widget build(BuildContext context) {
     double getMarginWidth = (context.width - 1152) < 0 ? 0 : (context.width - 1152) / 2;
     return Positioned(
-      top: (context.height / 4) > 300 ? 300 : context.height / 4 - (offset * 1.2),
+      top: (context.height / 4) > 300 ? 300 - (offset * 1.2) : context.height / 4 - (offset * 1.2),
       right: getMarginWidth - 200,
       child: Column(
         children: [

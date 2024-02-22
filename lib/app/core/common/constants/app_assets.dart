@@ -24,4 +24,5 @@ class AppSvgs {
   final String whatsapp = '${_path}whatsapp.svg';
   final String decoration_1 = '${_path}decoration_1.svg';
   final String decoration_2 = '${_path}decoration_2.svg';
+  final String decoration_4 = '${_path}decoration_4.svg';
 }

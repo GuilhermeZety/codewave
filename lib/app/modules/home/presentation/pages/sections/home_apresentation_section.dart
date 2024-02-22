@@ -29,15 +29,15 @@ class HomeApresentationSection extends StatefulWidget {
 }
 
 class _HomeApresentationSectionState extends State<HomeApresentationSection> {
-  String title1Text = '';
-  String subTitle1Text = '';
+  String titleText = '';
+  String subTitleText = '';
   String buttonText = '';
 
   @override
   void initState() {
-    title1Text = config.getString('TITULO_1');
-    subTitle1Text = config.getString('SUBTITULO_1');
-    buttonText = config.getString('BUTTON_1');
+    titleText = config.getString('APRESENTATION_TITLE');
+    subTitleText = config.getString('APRESENTATION_SUBTITLE');
+    buttonText = config.getString('APRESENTATION_BUTTON');
     if (mounted) setState(() {});
     super.initState();
   }
@@ -77,16 +77,11 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
                                 log('1');
                                 Timer(const Duration(milliseconds: 50), () {
                                   homeScrollController.animateTo(
-                                    context.height - 100,
+                                    context.height,
                                     curve: Curves.easeInCirc,
                                     duration: const Duration(milliseconds: 750),
                                   );
                                 });
-                                // await homeScrollController.animateTo(
-                                //   (contraints.maxHeight - 100),
-                                //   duration: const Duration(milliseconds: 5000),
-                                //   curve: Curves.easeInBack,
-                                // );
                               },
                             ),
                           ],
@@ -123,7 +118,7 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
         mainAxisSize: MainAxisSize.min,
         children: [
           AutoSizeText(
-            title1Text,
+            titleText,
             style: const TextStyle(
               fontSize: 42,
               fontWeight: AppFonts.bold,
@@ -133,7 +128,7 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
             textAlign: isNotDesktop ? TextAlign.center : TextAlign.start,
           ).expandedH(),
           AutoSizeText(
-            subTitle1Text,
+            subTitleText,
             style: const TextStyle(
               fontSize: 24,
               fontWeight: AppFonts.normal,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:landing_page/app/core/common/constants/app_assets.dart';
 import 'package:landing_page/app/core/common/extensions/context_extension.dart';
@@ -17,11 +16,10 @@ class HomeAppBar extends StatelessWidget {
       constraints: BoxConstraints(maxWidth: maxWidth),
       child: AppBar(
         backgroundColor: Colors.transparent,
-        title: SvgPicture.asset(
-          AppAssets.svgs.longLogo,
+        title: Image.asset(
+          AppAssets.images.longLogo,
           height: 35,
-          width: 35,
-        ).pRight(24),
+        ).pRight(24).pTop(12),
         actions: [
           if (!context.isMobile) ...[
             Button.third(
@@ -29,10 +27,10 @@ class HomeAppBar extends StatelessWidget {
                 //
               },
               child: const Text('Sobre'),
-            ),
+            ).pTop(12),
             const Gap(50),
           ],
-          Button.inverted(onPressed: null, child: const Text('Contato')).pRight(24),
+          Button.inverted(onPressed: null, child: const Text('Contato')).pRight(24).pTop(12),
         ],
       ),
     );

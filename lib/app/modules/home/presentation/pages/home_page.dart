@@ -2,7 +2,9 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 import 'package:landing_page/app/core/common/constants/app_assets.dart';
 import 'package:landing_page/app/core/common/constants/app_colors.dart';
 import 'package:landing_page/app/core/common/extensions/context_extension.dart';
@@ -10,6 +12,7 @@ import 'package:landing_page/app/core/common/extensions/widget_extension.dart';
 import 'package:landing_page/app/modules/home/presentation/pages/decorations/all_decorations.dart';
 import 'package:landing_page/app/modules/home/presentation/pages/sections/home_app_bar.dart';
 import 'package:landing_page/app/modules/home/presentation/pages/sections/home_apresentation_section.dart';
+import 'package:landing_page/app/modules/home/presentation/pages/sections/home_what_we_do_section.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -43,7 +46,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    streamController.add(0);
+    streamController.add(initialOffset);
     super.initState();
   }
 
@@ -61,43 +64,50 @@ class _HomePageState extends State<HomePage> {
           width: 40,
           height: 40,
         ),
-      ).pRight(24).pBottom(24),
+      ).pRight(24).pBottom(24).animate(onComplete: (_) => _.repeat(reverse: true)).slideY(
+            delay: 2000.ms,
+            begin: 0.1,
+            end: 0.0,
+          ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      body: Stack(
-        children: [
-          StreamBuilder(
-            stream: textStream,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                double offset = snapshot.data!;
-                return Stack(
-                  children: AllDecorations.decorations(context, offset),
-                );
-              }
-              return Container();
-            },
-          ),
-          SingleChildScrollView(
-            key: itemKey,
-            controller: homeScrollController,
-            child: SizedBox(
-              width: context.width,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  HomeAppBar(maxWidth: maxWidth),
-                  HomeApresentationSection(maxWidth: maxWidth),
-                  HomeAppBar(maxWidth: maxWidth),
-                  HomeApresentationSection(maxWidth: maxWidth),
-                ],
+      body: StreamBuilder<double>(
+        stream: textStream,
+        builder: (context, snapshot) {
+          return Stack(
+            children: [
+              Stack(
+                children: AllDecorations.decorations(context, snapshot.data ?? 0),
               ),
-            ),
-          ),
-        ],
+              SingleChildScrollView(
+                key: itemKey,
+                controller: homeScrollController,
+                child: SizedBox(
+                  width: context.width,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      HomeAppBar(maxWidth: maxWidth),
+                      HomeApresentationSection(maxWidth: maxWidth),
+                      if ((snapshot.data ?? 0) > 100)
+                        HomeWhatWeDoSection(maxWidth: maxWidth)
+                      else
+                        const SizedBox(
+                          height: 800,
+                        ),
+                      const Gap(300),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
 }
 
-ScrollController homeScrollController = ScrollController();
+ScrollController homeScrollController = ScrollController(initialScrollOffset: initialOffset);
 GlobalKey itemKey = GlobalKey();
+
+double initialOffset = 0;
