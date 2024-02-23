@@ -25,4 +25,7 @@ class AppSvgs {
   static const String lineR = '${_path}line_r.svg';
   static const String lineL = '${_path}line_l.svg';
   static const String team = '${_path}team.svg';
+  static const String waterLayer_1 = '${_path}water_layer_1.svg';
+  static const String waterLayer_2 = '${_path}water_layer_2.svg';
+  static const String waterLayer_3 = '${_path}water_layer_3.svg';
 }

@@ -226,6 +226,6 @@ class ItemOur extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ).shim();
   }
 }

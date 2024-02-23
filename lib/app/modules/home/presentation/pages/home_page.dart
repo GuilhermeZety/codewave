@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:gap/gap.dart';
 import 'package:landing_page/app/core/common/constants/app_assets.dart';
 import 'package:landing_page/app/core/common/constants/app_colors.dart';
 import 'package:landing_page/app/core/common/extensions/context_extension.dart';
@@ -12,6 +11,8 @@ import 'package:landing_page/app/modules/home/presentation/pages/decorations/all
 import 'package:landing_page/app/modules/home/presentation/pages/sections/home_about_us_section.dart';
 import 'package:landing_page/app/modules/home/presentation/pages/sections/home_app_bar.dart';
 import 'package:landing_page/app/modules/home/presentation/pages/sections/home_apresentation_section.dart';
+import 'package:landing_page/app/modules/home/presentation/pages/sections/home_contact_section.dart';
+import 'package:landing_page/app/modules/home/presentation/pages/sections/home_footer_section.dart';
 import 'package:landing_page/app/modules/home/presentation/pages/sections/home_our_values_section.dart';
 import 'package:landing_page/app/modules/home/presentation/pages/sections/home_project_flow_section.dart';
 import 'package:landing_page/app/modules/home/presentation/pages/sections/home_what_we_do_section.dart';
@@ -56,7 +57,8 @@ class _HomePageState extends State<HomePage> {
         const HomeOurValuesSection().pTop(100),
         const HomeAboutUsSection().pTop(100),
         const HomeProjectFlowSection(),
-        const Gap(200),
+        const HomeContactSection().pTop(100),
+        const HomeFooterSection(),
       ];
 
   @override

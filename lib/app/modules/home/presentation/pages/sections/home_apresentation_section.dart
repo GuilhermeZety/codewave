@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flextras/flextras.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,15 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
   String titleText = appTexts.apresentationTitle;
   String subTitleText = appTexts.apresentationSubtitle;
   String buttonText = appTexts.apresentationButton;
+
+  List<String> texts = [
+    'Android',
+    'IOS',
+    'Web',
+    'Linux',
+    'Windows',
+    'MacOS',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -102,16 +112,45 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
         crossAxisAlignment: isNotDesktop ? CrossAxisAlignment.center : CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          AutoSizeText(
-            titleText,
-            style: const TextStyle(
-              fontSize: 42,
-              fontWeight: AppFonts.bold,
-              color: AppColors.grey_600,
-            ),
-            maxLines: 2,
-            textAlign: isNotDesktop ? TextAlign.center : TextAlign.start,
-          ).expandedH(),
+          Column(
+            children: [
+              AutoSizeText(
+                titleText,
+                style: const TextStyle(
+                  fontSize: 42,
+                  fontWeight: AppFonts.bold,
+                  color: AppColors.grey_600,
+                ),
+                maxLines: 2,
+                textAlign: isNotDesktop ? TextAlign.center : TextAlign.start,
+              ).expandedH(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 30,
+                    child: AnimatedTextKit(
+                      pause: const Duration(milliseconds: 200),
+                      animatedTexts: texts
+                          .map(
+                            (e) => TypewriterAnimatedText(
+                              e,
+                              speed: const Duration(milliseconds: 200),
+                              textStyle: const TextStyle(
+                                fontSize: 24,
+                                fontWeight: AppFonts.normal,
+                                color: AppColors.primary,
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      repeatForever: true,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
           AutoSizeText(
             subTitleText,
             style: const TextStyle(

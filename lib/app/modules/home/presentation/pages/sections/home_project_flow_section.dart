@@ -141,14 +141,22 @@ class _HomeProjectFlowSectionState extends State<HomeProjectFlowSection> {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(Icons.keyboard_double_arrow_down_rounded, color: AppColors.white, size: 40)
-                        .animate(onComplete: (_) => _.repeat(reverse: true))
-                        .fade(
-                          duration: 800.ms,
-                          begin: 0.3,
-                          end: 1.0,
-                        )
-                        .slideY(duration: 800.ms, begin: -0.2, end: 0.2),
+                    GestureDetector(
+                      onTap: () {
+                        carouselController.nextPage();
+                      },
+                      child: Container(
+                        color: Colors.transparent,
+                        child: const Icon(Icons.keyboard_double_arrow_down_rounded, color: AppColors.white, size: 40)
+                            .animate(onComplete: (_) => _.repeat(reverse: true))
+                            .fade(
+                              duration: 800.ms,
+                              begin: 0.3,
+                              end: 1.0,
+                            )
+                            .slideY(duration: 800.ms, begin: -0.2, end: 0.2),
+                      ),
+                    ),
                   ],
                 ).pTop(400),
               ),
