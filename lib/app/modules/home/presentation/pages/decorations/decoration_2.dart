@@ -18,7 +18,7 @@ class Decoration2 extends StatelessWidget {
           SizedBox(
             width: (context.width / 1.5) > 900 ? 900 : context.width / 1.5,
             child: Image.asset(
-              AppAssets.images.macFrame,
+              AppImages.macFrame,
             ),
           ).animate().fade(duration: 300.ms).slideY(begin: 0.1, end: 0.0, duration: 300.ms),
         ],

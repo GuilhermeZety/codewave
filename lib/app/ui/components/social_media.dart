@@ -22,17 +22,17 @@ class _SocialMediaState extends State<SocialMedia> {
         separatorBuilder: () => Gap(widget.width / 5),
         children: [
           SvgPicture.asset(
-            AppAssets.svgs.linkedin,
+            AppSvgs.linkedin,
             width: widget.width / 5,
             height: widget.width / 5,
           ),
           SvgPicture.asset(
-            AppAssets.svgs.instagram,
+            AppSvgs.instagram,
             width: widget.width / 6,
             height: widget.width / 6,
           ),
           SvgPicture.asset(
-            AppAssets.svgs.github,
+            AppSvgs.github,
             width: widget.width / 5,
             height: widget.width / 5,
           ),

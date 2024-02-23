@@ -17,7 +17,7 @@ class Decoration3 extends StatelessWidget {
       child: Column(
         children: [
           SvgPicture.asset(
-            AppAssets.svgs.decoration_2,
+            AppSvgs.decoration_2,
             width: 250,
             height: 250,
           ).animate().fade(),

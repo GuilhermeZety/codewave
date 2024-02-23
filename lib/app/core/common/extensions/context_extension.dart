@@ -10,10 +10,10 @@ extension GetTheme on BuildContext {
   ThemeData get theme => Theme.of(this);
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
 
-  bool get isMobile => _size.shortestSide < 600;
-  bool get isNotDesktop => isMobile || isTablet;
+  bool get isMobile => _size.width < 600;
+  bool get isNotDesktop => _size.width < 900;
   bool get isTablet => _size.width >= 600 && _size.width < 900;
-  bool get isDesktop => _size.shortestSide >= 900;
+  bool get isDesktop => _size.width >= 900;
 
   LayoutTypes get layout => isMobile
       ? LayoutTypes.mobile

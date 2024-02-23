@@ -43,7 +43,7 @@ class _SlpashPageState extends State<SlpashPage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(AppAssets.images.longLogo, height: 35).hero('logo'),
+            Image.asset(AppImages.longLogo, height: 35).hero('logo'),
             const Gap(24),
             const Loader(),
           ],

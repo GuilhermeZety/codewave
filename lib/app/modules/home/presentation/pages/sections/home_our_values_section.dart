@@ -7,14 +7,13 @@ import 'package:landing_page/app/core/common/constants/app_colors.dart';
 import 'package:landing_page/app/core/common/constants/app_fonts.dart';
 import 'package:landing_page/app/core/common/extensions/context_extension.dart';
 import 'package:landing_page/app/core/common/extensions/widget_extension.dart';
+import 'package:landing_page/app/modules/home/presentation/pages/home_page.dart';
 import 'package:landing_page/main.dart';
 
 class HomeOurValuesSection extends StatefulWidget {
   const HomeOurValuesSection({
     super.key,
-    required this.maxWidth,
   });
-  final double maxWidth;
   @override
   State<HomeOurValuesSection> createState() => _HomeOurValuesSectionState();
 }
@@ -40,8 +39,8 @@ class _HomeOurValuesSectionState extends State<HomeOurValuesSection> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: widget.maxWidth,
+            constraints: const BoxConstraints(
+              maxWidth: maxWidthDesign,
             ),
             child: _mainContent.pTop(60),
           ).expanded(),
@@ -191,14 +190,6 @@ class ItemOur extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.grey_500.withOpacity(0.3),
-            spreadRadius: 0,
-            blurRadius: 20,
-            offset: const Offset(-8, 9), // changes position of shadow
-          ),
-        ],
       ),
       padding: const EdgeInsets.all(28),
       child: Column(

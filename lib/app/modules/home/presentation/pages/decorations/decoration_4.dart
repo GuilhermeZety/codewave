@@ -11,7 +11,7 @@ class Decoration4 extends StatelessWidget {
     return Column(
       children: [
         SvgPicture.asset(
-          AppAssets.svgs.decoration_4,
+          AppSvgs.decoration_4,
           width: 800,
         ),
       ],

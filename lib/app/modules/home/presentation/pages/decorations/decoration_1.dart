@@ -17,7 +17,7 @@ class Decoration1 extends StatelessWidget {
       top: 0 - (homeScrollController.positions.isEmpty ? 0 : homeScrollController.offset) - offset,
       right: getMarginWidth - 210,
       child: SvgPicture.asset(
-        AppAssets.svgs.decoration_1,
+        AppSvgs.decoration_1,
       ).animate().fade(duration: 500.ms).slideX(begin: 0.2, end: 0.0, duration: 300.ms).slideY(begin: -0.2, end: 0.0, duration: 300.ms),
     );
   }

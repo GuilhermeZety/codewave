@@ -3,14 +3,17 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 import 'package:landing_page/app/core/common/constants/app_assets.dart';
 import 'package:landing_page/app/core/common/constants/app_colors.dart';
 import 'package:landing_page/app/core/common/extensions/context_extension.dart';
 import 'package:landing_page/app/core/common/extensions/widget_extension.dart';
 import 'package:landing_page/app/modules/home/presentation/pages/decorations/all_decorations.dart';
+import 'package:landing_page/app/modules/home/presentation/pages/sections/home_about_us_section.dart';
 import 'package:landing_page/app/modules/home/presentation/pages/sections/home_app_bar.dart';
 import 'package:landing_page/app/modules/home/presentation/pages/sections/home_apresentation_section.dart';
 import 'package:landing_page/app/modules/home/presentation/pages/sections/home_our_values_section.dart';
+import 'package:landing_page/app/modules/home/presentation/pages/sections/home_project_flow_section.dart';
 import 'package:landing_page/app/modules/home/presentation/pages/sections/home_what_we_do_section.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,8 +24,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  double maxWidth = 1152;
-
   final StreamController<double> streamController = StreamController<double>();
 
   @override
@@ -49,10 +50,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   List<Widget> get sections => [
-        HomeAppBar(maxWidth: maxWidth),
-        HomeApresentationSection(maxWidth: maxWidth),
-        HomeWhatWeDoSection(maxWidth: maxWidth),
-        HomeOurValuesSection(maxWidth: maxWidth).pTop(100),
+        const HomeAppBar(),
+        const HomeApresentationSection(),
+        const HomeWhatWeDoSection(),
+        const HomeOurValuesSection().pTop(100),
+        const HomeAboutUsSection().pTop(100),
+        const HomeProjectFlowSection(),
+        const Gap(200),
       ];
 
   @override
@@ -65,7 +69,7 @@ class _HomePageState extends State<HomePage> {
           //
         },
         child: SvgPicture.asset(
-          AppAssets.svgs.whatsapp,
+          AppSvgs.whatsapp,
           width: 40,
           height: 40,
         ),
@@ -115,3 +119,5 @@ class _HomePageState extends State<HomePage> {
 ScrollController homeScrollController = ScrollController(initialScrollOffset: initialOffset);
 
 double initialOffset = 0;
+
+const double maxWidthDesign = 1152;

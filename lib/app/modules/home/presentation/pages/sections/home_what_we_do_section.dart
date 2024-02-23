@@ -8,14 +8,13 @@ import 'package:landing_page/app/core/common/constants/app_colors.dart';
 import 'package:landing_page/app/core/common/constants/app_fonts.dart';
 import 'package:landing_page/app/core/common/extensions/context_extension.dart';
 import 'package:landing_page/app/core/common/extensions/widget_extension.dart';
+import 'package:landing_page/app/modules/home/presentation/pages/home_page.dart';
 import 'package:landing_page/main.dart';
 
 class HomeWhatWeDoSection extends StatefulWidget {
   const HomeWhatWeDoSection({
     super.key,
-    required this.maxWidth,
   });
-  final double maxWidth;
   @override
   State<HomeWhatWeDoSection> createState() => _HomeWhatWeDoSectionState();
 }
@@ -39,28 +38,29 @@ class _HomeWhatWeDoSectionState extends State<HomeWhatWeDoSection> {
       margin = 30;
     }
     return ConstrainedBox(
-      constraints: BoxConstraints(maxWidth: widget.maxWidth),
+      constraints: const BoxConstraints(maxWidth: maxWidthDesign),
       child: Center(
         child: Column(
           children: [
-            Container(
+            ConstrainedBox(
               constraints: const BoxConstraints(
                 maxHeight: 1000,
               ),
               child: Stack(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: 400,
-                        child: SvgPicture.asset(
-                          AppAssets.svgs.decoration_4,
+                  if (!context.isMobile)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
                           height: 400,
-                        ),
-                      ).expanded(),
-                    ],
-                  ).pTop(180),
+                          child: SvgPicture.asset(
+                            AppSvgs.decoration_4,
+                            height: 400,
+                          ),
+                        ).expanded(),
+                      ],
+                    ).pTop(180),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -120,7 +120,7 @@ class _HomeWhatWeDoSectionState extends State<HomeWhatWeDoSection> {
                                 ),
                               ],
                             ),
-                          ),
+                          ).pTop(20),
                         ],
                       ).pH(24).expanded(),
                     ],
@@ -148,22 +148,9 @@ class ItemWWD extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         if (withIndicator && !right)
-          Container(
-            width: 50,
+          SvgPicture.asset(
+            AppSvgs.lineL,
             height: 40,
-            decoration: const BoxDecoration(
-              border: Border(
-                top: BorderSide(
-                  width: 1,
-                  color: AppColors.grey_500,
-                ),
-                left: BorderSide(
-                  width: 1,
-                  color: AppColors.grey_500,
-                ),
-              ),
-              borderRadius: BorderRadius.only(topLeft: Radius.circular(8)),
-            ),
           ).pLeft(margin),
         if (!withIndicator && !right)
           SizedBox(
@@ -175,41 +162,20 @@ class ItemWWD extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.white,
             borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.grey_500.withOpacity(0.3),
-                spreadRadius: 0,
-                blurRadius: 20,
-                offset: const Offset(0, 3), // changes position of shadow
-              ),
-            ],
           ),
           child: Text(
             text,
             style: const TextStyle(
-              fontSize: 14,
+              fontSize: 16,
               fontWeight: AppFonts.semiBold,
               color: AppColors.grey_500,
             ),
           ),
         ).expanded(),
         if (withIndicator && right)
-          Container(
-            width: 50,
+          SvgPicture.asset(
+            AppSvgs.lineR,
             height: 40,
-            decoration: const BoxDecoration(
-              border: Border(
-                top: BorderSide(
-                  width: 1,
-                  color: AppColors.grey_500,
-                ),
-                right: BorderSide(
-                  width: 1,
-                  color: AppColors.grey_500,
-                ),
-              ),
-              borderRadius: BorderRadius.only(topRight: Radius.circular(8)),
-            ),
           ).pRight(margin),
         if (!withIndicator && right)
           SizedBox(

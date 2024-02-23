@@ -4,9 +4,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flextras/flextras.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:landing_page/app/core/common/constants/app_assets.dart';
 import 'package:landing_page/app/core/common/constants/app_colors.dart';
 import 'package:landing_page/app/core/common/constants/app_fonts.dart';
 import 'package:landing_page/app/core/common/extensions/context_extension.dart';
@@ -20,9 +18,7 @@ import 'package:landing_page/main.dart';
 class HomeApresentationSection extends StatefulWidget {
   const HomeApresentationSection({
     super.key,
-    required this.maxWidth,
   });
-  final double maxWidth;
   @override
   State<HomeApresentationSection> createState() => _HomeApresentationSectionState();
 }
@@ -36,7 +32,7 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
   Widget build(BuildContext context) {
     return Center(
       child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: widget.maxWidth),
+        constraints: const BoxConstraints(maxWidth: maxWidthDesign),
         child: Center(
           child: Column(
             children: [
@@ -160,16 +156,4 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
       ).pH(24),
     ).animate().fade().slideY(begin: 0.2, end: 0.0);
   }
-
-  Positioned get _decoration2 => Positioned(
-        top: 0,
-        bottom: 0,
-        left: -220,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(AppAssets.svgs.decoration_2).animate().fade().slideX(begin: -0.2, end: 0.0),
-          ],
-        ),
-      );
 }
