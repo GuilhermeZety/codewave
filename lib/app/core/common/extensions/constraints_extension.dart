@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:landing_page/app/core/common/enums/layout_type.dart';
+import 'package:codewave_systems/app/core/common/enums/layout_type.dart';
 
 extension GetTheme on BoxConstraints {
   bool get isMobile => maxWidth < 600;

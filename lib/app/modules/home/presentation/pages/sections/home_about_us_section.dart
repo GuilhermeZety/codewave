@@ -5,13 +5,13 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_chat_bubble/chat_bubble.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:landing_page/app/core/common/constants/app_assets.dart';
-import 'package:landing_page/app/core/common/constants/app_colors.dart';
-import 'package:landing_page/app/core/common/constants/app_fonts.dart';
-import 'package:landing_page/app/core/common/extensions/context_extension.dart';
-import 'package:landing_page/app/core/common/extensions/widget_extension.dart';
-import 'package:landing_page/app/modules/home/presentation/pages/home_page.dart';
-import 'package:landing_page/main.dart';
+import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
+import 'package:codewave_systems/app/core/common/constants/app_fonts.dart';
+import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
+import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
+import 'package:codewave_systems/app/core/shared/app_cache.dart';
+import 'package:codewave_systems/app/modules/home/presentation/pages/home_page.dart';
+import 'package:codewave_systems/main.dart';
 
 class HomeAboutUsSection extends StatefulWidget {
   const HomeAboutUsSection({
@@ -41,8 +41,8 @@ class _HomeAboutUsSectionState extends State<HomeAboutUsSection> {
             if (context.width < 2000)
               SizedBox(
                 width: context.width,
-                child: SvgPicture.asset(
-                  AppSvgs.decoration_5,
+                child: SvgPicture.memory(
+                  AppCache.decoration_5,
                   width: 2000,
                   fit: BoxFit.cover,
                 ),
@@ -125,8 +125,8 @@ class _HomeAboutUsSectionState extends State<HomeAboutUsSection> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (!isNotDesktop)
-                SvgPicture.asset(
-                  AppSvgs.team,
+                SvgPicture.memory(
+                  AppCache.team,
                   width: 430,
                 ),
               const Gap(12),

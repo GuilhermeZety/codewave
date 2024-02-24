@@ -3,12 +3,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:landing_page/app/core/common/constants/app_assets.dart';
-import 'package:landing_page/app/core/common/extensions/widget_extension.dart';
-import 'package:landing_page/app/modules/home/presentation/pages/home_page.dart';
-import 'package:landing_page/app/ui/components/loader.dart';
-import 'package:landing_page/firebase_options.dart';
-import 'package:landing_page/main.dart';
+import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
+import 'package:codewave_systems/app/core/shared/app_cache.dart';
+import 'package:codewave_systems/app/modules/home/presentation/pages/home_page.dart';
+import 'package:codewave_systems/app/ui/components/loader.dart';
+import 'package:codewave_systems/firebase_options.dart';
+import 'package:codewave_systems/main.dart';
 
 class SlpashPage extends StatefulWidget {
   const SlpashPage({super.key});
@@ -24,6 +24,7 @@ class _SlpashPageState extends State<SlpashPage> {
       await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
       await appTexts.init();
+      await AppCache.init();
       if (mounted) setState(() {});
 
       Navigator.pushReplacement(
@@ -43,7 +44,7 @@ class _SlpashPageState extends State<SlpashPage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(AppImages.longLogo, height: 35).hero('logo'),
+            Image.asset('assets/images/long_logo.png', height: 35).hero('logo'),
             const Gap(24),
             const Loader(),
           ],

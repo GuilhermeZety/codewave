@@ -1,5 +1,5 @@
-name: landing_page
-description: "A new Flutter project."
+name: codewave_systems
+description: "A sua empresa de desenvolvimento de softwares"
 publish_to: 'none'
 version: 0.1.1+2
 
@@ -8,8 +8,6 @@ environment:
 
 dependencies:
   flutter:
-    sdk: flutter
-  flutter_localizations:
     sdk: flutter
   flutter_animate: ^4.5.0
   toastification: ^1.2.1
@@ -20,7 +18,7 @@ dependencies:
   flextras: ^1.0.0
   auto_size_text: ^3.0.0
   animated_text_kit: ^4.2.2
-  firebase_core: ^2.24.2
+  firebase_core: ^2.25.4
   firebase_remote_config: ^4.3.14
   flutter_chat_bubble: ^2.0.2
   carousel_slider: ^4.2.1
@@ -28,7 +26,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
+  flutter_lints: ^3.0.1
   flutter_launcher_icons: ^0.13.1
 
 

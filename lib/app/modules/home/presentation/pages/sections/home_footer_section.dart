@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:landing_page/app/core/common/constants/app_assets.dart';
-import 'package:landing_page/app/core/common/constants/app_colors.dart';
-import 'package:landing_page/app/core/common/constants/app_fonts.dart';
-import 'package:landing_page/app/core/common/extensions/context_extension.dart';
-import 'package:landing_page/app/core/common/extensions/widget_extension.dart';
-import 'package:landing_page/app/modules/home/presentation/pages/home_page.dart';
-import 'package:landing_page/app/ui/components/social_media.dart';
-import 'package:landing_page/main.dart';
+import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
+import 'package:codewave_systems/app/core/common/constants/app_fonts.dart';
+import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
+import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
+import 'package:codewave_systems/app/core/shared/app_cache.dart';
+import 'package:codewave_systems/app/modules/home/presentation/pages/home_page.dart';
+import 'package:codewave_systems/app/ui/components/social_media.dart';
+import 'package:codewave_systems/main.dart';
 
 class HomeFooterSection extends StatefulWidget {
   const HomeFooterSection({
@@ -34,8 +34,8 @@ class _HomeFooterSectionState extends State<HomeFooterSection> {
       children: [
         Positioned(
           bottom: -60,
-          child: SvgPicture.asset(
-            AppSvgs.waterLayer_3,
+          child: SvgPicture.memory(
+            AppCache.water_layer_3,
             width: context.width,
           )
               .animate(
@@ -49,8 +49,8 @@ class _HomeFooterSectionState extends State<HomeFooterSection> {
         ),
         Positioned(
           bottom: -80,
-          child: SvgPicture.asset(
-            AppSvgs.waterLayer_2,
+          child: SvgPicture.memory(
+            AppCache.water_layer_2,
             width: context.width,
           )
               .animate(
@@ -64,8 +64,8 @@ class _HomeFooterSectionState extends State<HomeFooterSection> {
         ),
         Positioned(
           bottom: -120,
-          child: SvgPicture.asset(
-            AppSvgs.waterLayer_1,
+          child: SvgPicture.memory(
+            AppCache.water_layer_1,
             width: context.width,
           )
               .animate(
@@ -105,8 +105,8 @@ class _HomeFooterSectionState extends State<HomeFooterSection> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image.asset(
-                            AppImages.longLogo,
+                          Image.memory(
+                            AppCache.longLogo,
                             height: 35,
                           ),
                           const Gap(24),
@@ -241,7 +241,7 @@ class _HomeFooterSectionState extends State<HomeFooterSection> {
           ).pV(24),
         ],
       ),
-    ).animate().fade().slideY(begin: 0.2, end: 0.0);
+    );
   }
 }
 

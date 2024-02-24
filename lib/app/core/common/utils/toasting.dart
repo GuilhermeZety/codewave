@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:landing_page/app/core/common/extensions/all_extension.dart';
+import 'package:codewave_systems/app/core/common/extensions/all_extension.dart';
 import 'package:toastification/toastification.dart';
 
 class Toasting {

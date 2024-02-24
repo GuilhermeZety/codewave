@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:landing_page/app/core/common/constants/app_assets.dart';
-import 'package:landing_page/app/core/common/constants/app_colors.dart';
-import 'package:landing_page/app/core/common/constants/app_fonts.dart';
-import 'package:landing_page/app/core/common/extensions/context_extension.dart';
-import 'package:landing_page/app/core/common/extensions/widget_extension.dart';
-import 'package:landing_page/main.dart';
+import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
+import 'package:codewave_systems/app/core/common/constants/app_fonts.dart';
+import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
+import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
+import 'package:codewave_systems/app/core/shared/app_cache.dart';
+import 'package:codewave_systems/main.dart';
 
 class HomeProjectFlowSection extends StatefulWidget {
   const HomeProjectFlowSection({
@@ -110,7 +110,7 @@ class _HomeProjectFlowSectionState extends State<HomeProjectFlowSection> {
             children: [
               Align(
                 alignment: Alignment.bottomRight,
-                child: SvgPicture.asset(AppSvgs.decoration_6).pTop(280),
+                child: SvgPicture.memory(AppCache.decoration_6).pTop(280),
               ),
               GestureDetector(
                 onTap: () {

@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart';
-import 'package:landing_page/app/core/common/utils/toasting.dart';
+import 'package:codewave_systems/app/core/common/utils/toasting.dart';
 
 class Utils {
   static void copy(context, String text, {bool logged = false}) async {

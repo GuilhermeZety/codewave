@@ -3,19 +3,19 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:landing_page/app/core/common/constants/app_assets.dart';
-import 'package:landing_page/app/core/common/constants/app_colors.dart';
-import 'package:landing_page/app/core/common/extensions/context_extension.dart';
-import 'package:landing_page/app/core/common/extensions/widget_extension.dart';
-import 'package:landing_page/app/modules/home/presentation/pages/decorations/all_decorations.dart';
-import 'package:landing_page/app/modules/home/presentation/pages/sections/home_about_us_section.dart';
-import 'package:landing_page/app/modules/home/presentation/pages/sections/home_app_bar.dart';
-import 'package:landing_page/app/modules/home/presentation/pages/sections/home_apresentation_section.dart';
-import 'package:landing_page/app/modules/home/presentation/pages/sections/home_contact_section.dart';
-import 'package:landing_page/app/modules/home/presentation/pages/sections/home_footer_section.dart';
-import 'package:landing_page/app/modules/home/presentation/pages/sections/home_our_values_section.dart';
-import 'package:landing_page/app/modules/home/presentation/pages/sections/home_project_flow_section.dart';
-import 'package:landing_page/app/modules/home/presentation/pages/sections/home_what_we_do_section.dart';
+import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
+import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
+import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
+import 'package:codewave_systems/app/core/shared/app_cache.dart';
+import 'package:codewave_systems/app/modules/home/presentation/pages/decorations/all_decorations.dart';
+import 'package:codewave_systems/app/modules/home/presentation/pages/sections/home_about_us_section.dart';
+import 'package:codewave_systems/app/modules/home/presentation/pages/sections/home_app_bar.dart';
+import 'package:codewave_systems/app/modules/home/presentation/pages/sections/home_apresentation_section.dart';
+import 'package:codewave_systems/app/modules/home/presentation/pages/sections/home_contact_section.dart';
+import 'package:codewave_systems/app/modules/home/presentation/pages/sections/home_footer_section.dart';
+import 'package:codewave_systems/app/modules/home/presentation/pages/sections/home_our_values_section.dart';
+import 'package:codewave_systems/app/modules/home/presentation/pages/sections/home_project_flow_section.dart';
+import 'package:codewave_systems/app/modules/home/presentation/pages/sections/home_what_we_do_section.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -70,8 +70,8 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           //
         },
-        child: SvgPicture.asset(
-          AppSvgs.whatsapp,
+        child: SvgPicture.memory(
+          AppCache.whatsapp,
           width: 40,
           height: 40,
         ),

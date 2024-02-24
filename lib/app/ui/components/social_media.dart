@@ -2,7 +2,7 @@ import 'package:flextras/flextras.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:landing_page/app/core/common/constants/app_assets.dart';
+import 'package:codewave_systems/app/core/shared/app_cache.dart';
 
 class SocialMedia extends StatefulWidget {
   const SocialMedia({super.key, required this.width});
@@ -21,18 +21,18 @@ class _SocialMediaState extends State<SocialMedia> {
       child: SeparatedRow(
         separatorBuilder: () => Gap(widget.width / 5),
         children: [
-          SvgPicture.asset(
-            AppSvgs.linkedin,
+          SvgPicture.memory(
+            AppCache.linkedin,
             width: widget.width / 5,
             height: widget.width / 5,
           ),
-          SvgPicture.asset(
-            AppSvgs.instagram,
+          SvgPicture.memory(
+            AppCache.instagram,
             width: widget.width / 6,
             height: widget.width / 6,
           ),
-          SvgPicture.asset(
-            AppSvgs.github,
+          SvgPicture.memory(
+            AppCache.github,
             width: widget.width / 5,
             height: widget.width / 5,
           ),

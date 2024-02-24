@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:landing_page/app/core/common/constants/app_assets.dart';
-import 'package:landing_page/app/core/common/extensions/context_extension.dart';
-import 'package:landing_page/app/core/common/extensions/widget_extension.dart';
-import 'package:landing_page/app/modules/home/presentation/pages/home_page.dart';
-import 'package:landing_page/app/ui/components/button.dart';
+import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
+import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
+import 'package:codewave_systems/app/core/shared/app_cache.dart';
+import 'package:codewave_systems/app/modules/home/presentation/pages/home_page.dart';
+import 'package:codewave_systems/app/ui/components/button.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({
@@ -23,8 +23,8 @@ class HomeAppBar extends StatelessWidget {
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent,
             surfaceTintColor: Colors.transparent,
-            title: Image.asset(
-              AppImages.longLogo,
+            title: Image.memory(
+              AppCache.longLogo,
               height: 35,
             ).pRight(24).pTop(12).hero('logo'),
             actions: [

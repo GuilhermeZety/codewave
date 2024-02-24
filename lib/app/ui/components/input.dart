@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
-import 'package:landing_page/app/core/common/constants/app_colors.dart';
-import 'package:landing_page/app/core/common/extensions/widget_extension.dart';
+import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
+import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
 
 class Input extends StatefulWidget {
   final String? label;

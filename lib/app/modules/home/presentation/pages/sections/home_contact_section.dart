@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:landing_page/app/core/common/constants/app_assets.dart';
-import 'package:landing_page/app/core/common/constants/app_colors.dart';
-import 'package:landing_page/app/core/common/constants/app_fonts.dart';
-import 'package:landing_page/app/core/common/extensions/context_extension.dart';
-import 'package:landing_page/app/core/common/extensions/widget_extension.dart';
-import 'package:landing_page/app/ui/components/button.dart';
-import 'package:landing_page/app/ui/components/input.dart';
+import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
+import 'package:codewave_systems/app/core/common/constants/app_fonts.dart';
+import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
+import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
+import 'package:codewave_systems/app/core/shared/app_cache.dart';
+import 'package:codewave_systems/app/ui/components/button.dart';
+import 'package:codewave_systems/app/ui/components/input.dart';
 
 class HomeContactSection extends StatefulWidget {
   const HomeContactSection({
@@ -31,8 +31,8 @@ class _HomeContactSectionState extends State<HomeContactSection> {
       children: [
         Positioned(
           bottom: -(context.width * 0.01),
-          child: SvgPicture.asset(
-            AppSvgs.waterLayer_3,
+          child: SvgPicture.memory(
+            AppCache.water_layer_3,
             width: context.width,
           )
               .animate(
@@ -46,8 +46,8 @@ class _HomeContactSectionState extends State<HomeContactSection> {
         ),
         Positioned(
           bottom: -(context.width * 0.02),
-          child: SvgPicture.asset(
-            AppSvgs.waterLayer_2,
+          child: SvgPicture.memory(
+            AppCache.water_layer_2,
             width: context.width,
           )
               .animate(
@@ -61,8 +61,8 @@ class _HomeContactSectionState extends State<HomeContactSection> {
         ),
         Positioned(
           bottom: -(context.width * 0.03),
-          child: SvgPicture.asset(
-            AppSvgs.waterLayer_1,
+          child: SvgPicture.memory(
+            AppCache.water_layer_1,
             width: context.width,
           )
               .animate(

@@ -3,13 +3,13 @@ import 'package:flextras/flextras.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:landing_page/app/core/common/constants/app_assets.dart';
-import 'package:landing_page/app/core/common/constants/app_colors.dart';
-import 'package:landing_page/app/core/common/constants/app_fonts.dart';
-import 'package:landing_page/app/core/common/extensions/context_extension.dart';
-import 'package:landing_page/app/core/common/extensions/widget_extension.dart';
-import 'package:landing_page/app/modules/home/presentation/pages/home_page.dart';
-import 'package:landing_page/main.dart';
+import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
+import 'package:codewave_systems/app/core/common/constants/app_fonts.dart';
+import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
+import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
+import 'package:codewave_systems/app/core/shared/app_cache.dart';
+import 'package:codewave_systems/app/modules/home/presentation/pages/home_page.dart';
+import 'package:codewave_systems/main.dart';
 
 class HomeWhatWeDoSection extends StatefulWidget {
   const HomeWhatWeDoSection({
@@ -54,8 +54,8 @@ class _HomeWhatWeDoSectionState extends State<HomeWhatWeDoSection> {
                       children: [
                         SizedBox(
                           height: 400,
-                          child: SvgPicture.asset(
-                            AppSvgs.decoration_4,
+                          child: SvgPicture.memory(
+                            AppCache.decoration_4,
                             height: 400,
                           ),
                         ).expanded(),
@@ -148,8 +148,8 @@ class ItemWWD extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         if (withIndicator && !right)
-          SvgPicture.asset(
-            AppSvgs.lineL,
+          SvgPicture.memory(
+            AppCache.line_l,
             height: 40,
           ).pLeft(margin),
         if (!withIndicator && !right)
@@ -173,8 +173,8 @@ class ItemWWD extends StatelessWidget {
           ),
         ).expanded(),
         if (withIndicator && right)
-          SvgPicture.asset(
-            AppSvgs.lineR,
+          SvgPicture.memory(
+            AppCache.line_r,
             height: 40,
           ).pRight(margin),
         if (!withIndicator && right)

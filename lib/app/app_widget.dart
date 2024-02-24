@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:landing_page/app/core/common/constants/app_theme.dart';
-import 'package:landing_page/app/modules/splash/presentation/pages/splash_page.dart';
+import 'package:codewave_systems/app/core/common/constants/app_theme.dart';
+import 'package:codewave_systems/app/modules/splash/presentation/pages/splash_page.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
@@ -27,14 +26,6 @@ class _AppWidgetState extends State<AppWidget> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'CodeWave Systems',
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('pt'),
-      ],
       darkTheme: AppTheme.light,
       themeMode: ThemeMode.light,
       debugShowCheckedModeBanner: false,

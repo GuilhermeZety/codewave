@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:landing_page/app/core/common/constants/app_colors.dart';
-import 'package:landing_page/app/core/common/constants/app_fonts.dart';
-import 'package:landing_page/app/core/common/extensions/color_extension.dart';
-import 'package:landing_page/app/core/common/utils/toasting.dart';
-import 'package:landing_page/app/ui/components/loader.dart';
+import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
+import 'package:codewave_systems/app/core/common/constants/app_fonts.dart';
+import 'package:codewave_systems/app/core/common/extensions/color_extension.dart';
+import 'package:codewave_systems/app/core/common/utils/toasting.dart';
+import 'package:codewave_systems/app/ui/components/loader.dart';
 
 // Custom buttons are created by extending the MaterialButton class
 class Button extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:landing_page/app/core/common/constants/app_colors.dart';
+import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class Loader extends StatelessWidget {

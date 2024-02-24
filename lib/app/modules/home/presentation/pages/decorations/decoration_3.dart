@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:landing_page/app/core/common/constants/app_assets.dart';
-import 'package:landing_page/app/core/common/extensions/context_extension.dart';
+import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
+import 'package:codewave_systems/app/core/shared/app_cache.dart';
 
 class Decoration3 extends StatelessWidget {
   const Decoration3({super.key, required this.offset});
@@ -16,8 +16,8 @@ class Decoration3 extends StatelessWidget {
       left: -270 + ((getMarginWidth > 125) ? 125 : getMarginWidth),
       child: Column(
         children: [
-          SvgPicture.asset(
-            AppSvgs.decoration_2,
+          SvgPicture.memory(
+            AppCache.decoration_2,
             width: 250,
             height: 250,
           ).animate().fade(),
