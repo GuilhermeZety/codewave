@@ -1,14 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flextras/flextras.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:gap/gap.dart';
 import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
 import 'package:codewave_systems/app/core/common/constants/app_fonts.dart';
 import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
 import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
+import 'package:codewave_systems/app/core/shared/controller/app_texts.dart';
 import 'package:codewave_systems/app/modules/home/presentation/pages/home_page.dart';
-import 'package:codewave_systems/main.dart';
+import 'package:flextras/flextras.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:gap/gap.dart';
 
 class HomeOurValuesSection extends StatefulWidget {
   const HomeOurValuesSection({
@@ -19,16 +19,16 @@ class HomeOurValuesSection extends StatefulWidget {
 }
 
 class _HomeOurValuesSectionState extends State<HomeOurValuesSection> {
-  final String titleText = appTexts.ourValuesTitle;
+  final String titleText = AppTexts.ourValuesTitle;
   final List<String> titles = [
-    appTexts.ourValuesTextTitle1,
-    appTexts.ourValuesTextTitle2,
-    appTexts.ourValuesTextTitle3,
+    AppTexts.ourValuesTextTitle1,
+    AppTexts.ourValuesTextTitle2,
+    AppTexts.ourValuesTextTitle3,
   ];
   final List<String> texts = [
-    appTexts.ourValuesText1,
-    appTexts.ourValuesText2,
-    appTexts.ourValuesText3,
+    AppTexts.ourValuesText1,
+    AppTexts.ourValuesText2,
+    AppTexts.ourValuesText3,
   ];
 
   @override

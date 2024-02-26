@@ -1,8 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
 import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
 import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
@@ -16,6 +13,9 @@ import 'package:codewave_systems/app/modules/home/presentation/pages/sections/ho
 import 'package:codewave_systems/app/modules/home/presentation/pages/sections/home_our_values_section.dart';
 import 'package:codewave_systems/app/modules/home/presentation/pages/sections/home_project_flow_section.dart';
 import 'package:codewave_systems/app/modules/home/presentation/pages/sections/home_what_we_do_section.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -88,10 +88,11 @@ class _HomePageState extends State<HomePage> {
             return SizedBox(
               width: context.width,
               height: context.height,
-              child: ListView.builder(
+              child: SingleChildScrollView(
                 controller: homeScrollController,
-                itemBuilder: (context, index) => sections[index],
-                itemCount: sections.length,
+                child: Column(
+                  children: sections,
+                ),
               ),
             );
           }
@@ -104,10 +105,15 @@ class _HomePageState extends State<HomePage> {
                   Stack(
                     children: AllDecorations.decorations(context, snapshot.data ?? 0),
                   ),
-                ListView.builder(
-                  controller: homeScrollController,
-                  itemBuilder: (context, index) => sections[index],
-                  itemCount: sections.length,
+                SizedBox(
+                  width: context.width,
+                  height: context.height,
+                  child: SingleChildScrollView(
+                    controller: homeScrollController,
+                    child: Column(
+                      children: sections,
+                    ),
+                  ),
                 ),
               ],
             ),

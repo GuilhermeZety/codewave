@@ -1,17 +1,17 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
+import 'package:codewave_systems/app/core/common/constants/app_fonts.dart';
+import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
+import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
+import 'package:codewave_systems/app/core/shared/app_cache.dart';
+import 'package:codewave_systems/app/core/shared/controller/app_texts.dart';
+import 'package:codewave_systems/app/modules/home/presentation/pages/home_page.dart';
 import 'package:flextras/flextras.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_chat_bubble/chat_bubble.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
-import 'package:codewave_systems/app/core/common/constants/app_fonts.dart';
-import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
-import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
-import 'package:codewave_systems/app/core/shared/app_cache.dart';
-import 'package:codewave_systems/app/modules/home/presentation/pages/home_page.dart';
-import 'package:codewave_systems/main.dart';
 
 class HomeAboutUsSection extends StatefulWidget {
   const HomeAboutUsSection({
@@ -22,13 +22,13 @@ class HomeAboutUsSection extends StatefulWidget {
 }
 
 class _HomeAboutUsSectionState extends State<HomeAboutUsSection> {
-  final String titleText = appTexts.aboutUsTitle;
-  final String subtitle = appTexts.aboutUsSubtitle;
+  final String titleText = AppTexts.aboutUsTitle;
+  final String subtitle = AppTexts.aboutUsSubtitle;
   final List<String> texts = [
-    appTexts.aboutUsText1,
-    appTexts.aboutUsText2,
-    appTexts.aboutUsText3,
-    appTexts.aboutUsText4,
+    AppTexts.aboutUsText1,
+    AppTexts.aboutUsText2,
+    AppTexts.aboutUsText3,
+    AppTexts.aboutUsText4,
   ];
 
   @override
@@ -135,15 +135,18 @@ class _HomeAboutUsSectionState extends State<HomeAboutUsSection> {
                   Widget w = SeparatedColumn(
                     separatorBuilder: () => const Gap(24),
                     children: [
-                      bubble(texts[0]).pLeft(0),
-                      bubble(texts[1]).pLeft(isNotDesktop ? 0 : 30),
-                      bubble(texts[2]).pLeft(isNotDesktop ? 0 : 30),
-                      bubble(texts[3]).pLeft(0),
+                      AboutUsBubble(text: texts[0]),
+                      AboutUsBubble(text: texts[0]),
+                      AboutUsBubble(text: texts[0]),
+                      AboutUsBubble(text: texts[0]),
+                      // bubble(texts[1]).pLeft(isNotDesktop ? 0 : 30),
+                      // bubble(texts[2]).pLeft(isNotDesktop ? 0 : 30),
+                      // bubble(texts[3]).pLeft(0),
                     ],
                   );
 
                   if (!isNotDesktop) {
-                    w = w.expanded();
+                    return w.expanded();
                   }
 
                   return w;
@@ -156,8 +159,15 @@ class _HomeAboutUsSectionState extends State<HomeAboutUsSection> {
       ],
     ).animate().fade(duration: 400.ms).slideY(begin: 0.2, end: 0.0);
   }
+}
 
-  Widget bubble(String text) {
+class AboutUsBubble extends StatelessWidget {
+  const AboutUsBubble({super.key, required this.text});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
     if (context.isNotDesktop) {
       return Container(
         width: context.width - 26,

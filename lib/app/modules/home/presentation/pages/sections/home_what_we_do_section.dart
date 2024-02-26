@@ -1,15 +1,15 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flextras/flextras.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:gap/gap.dart';
 import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
 import 'package:codewave_systems/app/core/common/constants/app_fonts.dart';
 import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
 import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
 import 'package:codewave_systems/app/core/shared/app_cache.dart';
+import 'package:codewave_systems/app/core/shared/controller/app_texts.dart';
 import 'package:codewave_systems/app/modules/home/presentation/pages/home_page.dart';
-import 'package:codewave_systems/main.dart';
+import 'package:flextras/flextras.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 
 class HomeWhatWeDoSection extends StatefulWidget {
   const HomeWhatWeDoSection({
@@ -20,12 +20,12 @@ class HomeWhatWeDoSection extends StatefulWidget {
 }
 
 class _HomeWhatWeDoSectionState extends State<HomeWhatWeDoSection> {
-  final String titleText = appTexts.whatWeDoTitle;
+  final String titleText = AppTexts.whatWeDoTitle;
   final List<String> texts = [
-    appTexts.whatWeDoText1,
-    appTexts.whatWeDoText2,
-    appTexts.whatWeDoText3,
-    appTexts.whatWeDoText4,
+    AppTexts.whatWeDoText1,
+    AppTexts.whatWeDoText2,
+    AppTexts.whatWeDoText3,
+    AppTexts.whatWeDoText4,
   ];
 
   @override

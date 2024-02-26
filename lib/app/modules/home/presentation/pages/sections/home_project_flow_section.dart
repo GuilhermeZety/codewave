@@ -1,16 +1,16 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flextras/flextras.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:gap/gap.dart';
 import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
 import 'package:codewave_systems/app/core/common/constants/app_fonts.dart';
 import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
 import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
 import 'package:codewave_systems/app/core/shared/app_cache.dart';
-import 'package:codewave_systems/main.dart';
+import 'package:codewave_systems/app/core/shared/controller/app_texts.dart';
+import 'package:flextras/flextras.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 
 class HomeProjectFlowSection extends StatefulWidget {
   const HomeProjectFlowSection({
@@ -21,47 +21,47 @@ class HomeProjectFlowSection extends StatefulWidget {
 }
 
 class _HomeProjectFlowSectionState extends State<HomeProjectFlowSection> {
-  String titleText = appTexts.apresentationTitle;
-  List<Map<String, dynamic>> listCarroussel = [
+  String titleText = AppTexts.apresentationTitle;
+  static List<Map<String, dynamic>> listCarroussel = [
     {
       'number': '1',
-      'title': appTexts.projectFlowCardTitle1,
-      'text': appTexts.projectFlowCardText1,
+      'title': AppTexts.projectFlowCardTitle1,
+      'text': AppTexts.projectFlowCardText1,
     },
     {
       'number': '2',
-      'title': appTexts.projectFlowCardTitle2,
-      'text': appTexts.projectFlowCardText2,
+      'title': AppTexts.projectFlowCardTitle2,
+      'text': AppTexts.projectFlowCardText2,
     },
     {
       'number': '3',
-      'title': appTexts.projectFlowCardTitle3,
-      'text': appTexts.projectFlowCardText3,
+      'title': AppTexts.projectFlowCardTitle3,
+      'text': AppTexts.projectFlowCardText3,
     },
     {
       'number': '4',
-      'title': appTexts.projectFlowCardTitle4,
-      'text': appTexts.projectFlowCardText4,
+      'title': AppTexts.projectFlowCardTitle4,
+      'text': AppTexts.projectFlowCardText4,
     },
     {
       'number': '5',
-      'title': appTexts.projectFlowCardTitle5,
-      'text': appTexts.projectFlowCardText5,
+      'title': AppTexts.projectFlowCardTitle5,
+      'text': AppTexts.projectFlowCardText5,
     },
     {
       'number': '6',
-      'title': appTexts.projectFlowCardTitle6,
-      'text': appTexts.projectFlowCardText6,
+      'title': AppTexts.projectFlowCardTitle6,
+      'text': AppTexts.projectFlowCardText6,
     },
     {
       'number': '7',
-      'title': appTexts.projectFlowCardTitle7,
-      'text': appTexts.projectFlowCardText7,
+      'title': AppTexts.projectFlowCardTitle7,
+      'text': AppTexts.projectFlowCardText7,
     },
     {
       'number': '8',
-      'title': appTexts.projectFlowCardTitle8,
-      'text': appTexts.projectFlowCardText8,
+      'title': AppTexts.projectFlowCardTitle8,
+      'text': AppTexts.projectFlowCardText8,
     },
   ];
   CarouselController carouselController = CarouselController();
@@ -112,29 +112,41 @@ class _HomeProjectFlowSectionState extends State<HomeProjectFlowSection> {
                 alignment: Alignment.bottomRight,
                 child: SvgPicture.memory(AppCache.decoration_6).pTop(280),
               ),
-              GestureDetector(
-                onTap: () {
-                  carouselController.nextPage();
-                },
-                child: Container(
-                  color: Colors.transparent,
-                  height: 420,
-                  width: 600,
-                  child: CarouselSlider(
-                    items: carrousselImages,
-                    carouselController: carouselController,
-                    options: CarouselOptions(
-                      scrollPhysics: const NeverScrollableScrollPhysics(),
-                      aspectRatio: 2.0,
-                      viewportFraction: 0.3,
-                      enlargeCenterPage: true,
-                      enlargeFactor: 0.4,
-                      autoPlayInterval: 4.seconds,
-                      scrollDirection: Axis.vertical,
-                      autoPlay: true,
+              Builder(
+                builder: (context) {
+                  return GestureDetector(
+                    onTap: () {
+                      carouselController.nextPage();
+                    },
+                    child: Container(
+                      color: Colors.transparent,
+                      height: 420,
+                      width: 600,
+                      child: CarouselSlider(
+                        items: listCarroussel
+                            .map(
+                              (item) => FlowItem(
+                                number: item['number'],
+                                title: item['title'],
+                                text: item['text'],
+                              ).p(5),
+                            )
+                            .toList(),
+                        carouselController: carouselController,
+                        options: CarouselOptions(
+                          scrollPhysics: const NeverScrollableScrollPhysics(),
+                          aspectRatio: 2.0,
+                          viewportFraction: 0.3,
+                          enlargeCenterPage: true,
+                          enlargeFactor: 0.4,
+                          autoPlayInterval: 4.seconds,
+                          scrollDirection: Axis.vertical,
+                          autoPlay: true,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
               Align(
                 alignment: Alignment.bottomCenter,
@@ -147,14 +159,7 @@ class _HomeProjectFlowSectionState extends State<HomeProjectFlowSection> {
                       },
                       child: Container(
                         color: Colors.transparent,
-                        child: const Icon(Icons.keyboard_double_arrow_down_rounded, color: AppColors.white, size: 40)
-                            .animate(onComplete: (_) => _.repeat(reverse: true))
-                            .fade(
-                              duration: 800.ms,
-                              begin: 0.3,
-                              end: 1.0,
-                            )
-                            .slideY(duration: 800.ms, begin: -0.2, end: 0.2),
+                        child: const Icon(Icons.keyboard_double_arrow_down_rounded, color: AppColors.white, size: 40),
                       ),
                     ),
                   ],
@@ -164,21 +169,8 @@ class _HomeProjectFlowSectionState extends State<HomeProjectFlowSection> {
           ),
         ],
       ).pH(24),
-    ).animate().fade().slideY(begin: 0.2, end: 0.0);
+    );
   }
-
-  List<Widget> get carrousselImages => listCarroussel
-      .map(
-        (item) => Container(
-          margin: const EdgeInsets.all(5.0),
-          child: FlowItem(
-            number: item['number'],
-            title: item['title'],
-            text: item['text'],
-          ),
-        ),
-      )
-      .toList();
 }
 
 class FlowItem extends StatelessWidget {

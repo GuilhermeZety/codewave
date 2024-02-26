@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
 import 'package:codewave_systems/app/core/shared/app_cache.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class Decoration2 extends StatelessWidget {
   const Decoration2({super.key, required this.offset});
@@ -18,7 +18,7 @@ class Decoration2 extends StatelessWidget {
           SizedBox(
             width: (context.width / 1.5) > 900 ? 900 : context.width / 1.5,
             child: Image.memory(
-              AppCache.macFrame,
+              AppCache.macFrame!,
             ),
           ).animate().fade(duration: 300.ms).slideY(begin: 0.1, end: 0.0, duration: 300.ms),
         ],

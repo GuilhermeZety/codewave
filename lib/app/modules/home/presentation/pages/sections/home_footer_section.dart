@@ -1,17 +1,17 @@
 import 'dart:developer';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:gap/gap.dart';
 import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
 import 'package:codewave_systems/app/core/common/constants/app_fonts.dart';
 import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
 import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
 import 'package:codewave_systems/app/core/shared/app_cache.dart';
+import 'package:codewave_systems/app/core/shared/controller/app_texts.dart';
 import 'package:codewave_systems/app/modules/home/presentation/pages/home_page.dart';
 import 'package:codewave_systems/app/ui/components/social_media.dart';
-import 'package:codewave_systems/main.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 
 class HomeFooterSection extends StatefulWidget {
   const HomeFooterSection({
@@ -22,7 +22,7 @@ class HomeFooterSection extends StatefulWidget {
 }
 
 class _HomeFooterSectionState extends State<HomeFooterSection> {
-  String titleText = appTexts.apresentationTitle;
+  String titleText = AppTexts.apresentationTitle;
 
   TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();

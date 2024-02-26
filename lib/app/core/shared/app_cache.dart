@@ -1,7 +1,7 @@
 // ignore_for_file: unused_field, non_constant_identifier_names
 
-import 'package:flutter/services.dart';
 import 'package:codewave_systems/app/core/common/utils/utils.dart';
+import 'package:flutter/services.dart';
 
 class AppCache {
   //SingleTon
@@ -11,6 +11,9 @@ class AppCache {
   //
 
   static Future init() async {
+    if (macFrame != null) {
+      return;
+    }
     List<Uint8List> resp = await Future.wait([
       Utils.getAssetsBytes('assets/images/mac_frame.png'),
       Utils.getAssetsBytes('assets/images/long_logo.png'),
@@ -51,7 +54,7 @@ class AppCache {
     team = resp[16];
   }
 
-  static late Uint8List macFrame;
+  static Uint8List? macFrame;
   static late Uint8List longLogo;
   static late Uint8List instagram;
   static late Uint8List linkedin;

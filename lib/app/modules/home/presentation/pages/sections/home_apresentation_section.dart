@@ -2,19 +2,19 @@ import 'dart:async';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flextras/flextras.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:gap/gap.dart';
 import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
 import 'package:codewave_systems/app/core/common/constants/app_fonts.dart';
 import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
 import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
+import 'package:codewave_systems/app/core/shared/controller/app_texts.dart';
 import 'package:codewave_systems/app/modules/home/presentation/pages/home_page.dart';
 import 'package:codewave_systems/app/ui/components/button.dart';
 import 'package:codewave_systems/app/ui/components/continue_indicator.dart';
 import 'package:codewave_systems/app/ui/components/social_media.dart';
-import 'package:codewave_systems/main.dart';
+import 'package:flextras/flextras.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:gap/gap.dart';
 
 class HomeApresentationSection extends StatefulWidget {
   const HomeApresentationSection({
@@ -25,9 +25,9 @@ class HomeApresentationSection extends StatefulWidget {
 }
 
 class _HomeApresentationSectionState extends State<HomeApresentationSection> {
-  String titleText = appTexts.apresentationTitle;
-  String subTitleText = appTexts.apresentationSubtitle;
-  String buttonText = appTexts.apresentationButton;
+  String titleText = AppTexts.apresentationTitle;
+  String subTitleText = AppTexts.apresentationSubtitle;
+  String buttonText = AppTexts.apresentationButton;
 
   List<String> texts = [
     'Android',
