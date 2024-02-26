@@ -53,11 +53,11 @@ class _HomePageState extends State<HomePage> {
   List<Widget> get sections => [
         const HomeAppBar(),
         const HomeApresentationSection(),
-        const HomeWhatWeDoSection(),
+        const HomeWhatWeDoSection().pTop(80),
         const HomeOurValuesSection().pTop(100),
-        const HomeAboutUsSection().pTop(100),
+        const HomeAboutUsSection(),
         const HomeProjectFlowSection(),
-        const HomeContactSection().pTop(100),
+        const HomeContactSection().pTop(60),
         const HomeFooterSection(),
       ];
 
@@ -101,19 +101,13 @@ class _HomePageState extends State<HomePage> {
             height: context.height,
             child: Stack(
               children: [
-                if (!context.isNotDesktop && snapshot.data != null && (snapshot.data ?? 0) < context.height * 1)
+                if (snapshot.data != null && (snapshot.data ?? 0) < context.height * 1)
                   Stack(
                     children: AllDecorations.decorations(context, snapshot.data ?? 0),
                   ),
-                SizedBox(
-                  width: context.width,
-                  height: context.height,
-                  child: SingleChildScrollView(
-                    controller: homeScrollController,
-                    child: Column(
-                      children: sections,
-                    ),
-                  ),
+                ListView(
+                  controller: homeScrollController,
+                  children: sections,
                 ),
               ],
             ),

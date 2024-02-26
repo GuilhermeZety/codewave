@@ -48,7 +48,7 @@ class _HomeWhatWeDoSectionState extends State<HomeWhatWeDoSection> {
               ),
               child: Stack(
                 children: [
-                  if (!context.isMobile)
+                  if (!context.isNotDesktop)
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -131,7 +131,7 @@ class _HomeWhatWeDoSectionState extends State<HomeWhatWeDoSection> {
           ],
         ),
       ),
-    ).pTop(140);
+    );
   }
 }
 

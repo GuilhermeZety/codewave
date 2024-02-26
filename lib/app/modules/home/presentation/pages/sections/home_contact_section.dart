@@ -1,9 +1,4 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flextras/flextras.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:gap/gap.dart';
 import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
 import 'package:codewave_systems/app/core/common/constants/app_fonts.dart';
 import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
@@ -11,6 +6,11 @@ import 'package:codewave_systems/app/core/common/extensions/widget_extension.dar
 import 'package:codewave_systems/app/core/shared/app_cache.dart';
 import 'package:codewave_systems/app/ui/components/button.dart';
 import 'package:codewave_systems/app/ui/components/input.dart';
+import 'package:flextras/flextras.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 
 class HomeContactSection extends StatefulWidget {
   const HomeContactSection({
@@ -20,10 +20,11 @@ class HomeContactSection extends StatefulWidget {
   State<HomeContactSection> createState() => _HomeContactSectionState();
 }
 
+TextEditingController descriptionController = TextEditingController();
+
 class _HomeContactSectionState extends State<HomeContactSection> {
   TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

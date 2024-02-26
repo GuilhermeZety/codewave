@@ -6,8 +6,10 @@ import 'package:codewave_systems/app/core/common/constants/app_colors.dart';
 import 'package:codewave_systems/app/core/common/constants/app_fonts.dart';
 import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
 import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
+import 'package:codewave_systems/app/core/shared/app_sections_size.dart';
 import 'package:codewave_systems/app/core/shared/controller/app_texts.dart';
 import 'package:codewave_systems/app/modules/home/presentation/pages/home_page.dart';
+import 'package:codewave_systems/app/modules/home/presentation/pages/sections/home_contact_section.dart';
 import 'package:codewave_systems/app/ui/components/button.dart';
 import 'package:codewave_systems/app/ui/components/continue_indicator.dart';
 import 'package:codewave_systems/app/ui/components/social_media.dart';
@@ -164,7 +166,8 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
             builder: (context) {
               var button = Button(
                 onPressed: () async {
-                  //TODO:
+                  homeScrollController.animateTo(AppSectionSizes.getContactOffset(context), duration: 700.ms, curve: Curves.easeInOutCirc);
+                  descriptionController.text = 'Olá, estou interessado em desenvolver um software personalizado para minha empresa. Aguardo seu retorno para discutirmos detalhes. Obrigado!';
                 },
                 child: Text(buttonText),
               );

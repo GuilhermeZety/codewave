@@ -5,6 +5,7 @@ import 'package:codewave_systems/app/core/common/constants/app_fonts.dart';
 import 'package:codewave_systems/app/core/common/extensions/context_extension.dart';
 import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
 import 'package:codewave_systems/app/core/shared/app_cache.dart';
+import 'package:codewave_systems/app/core/shared/app_sections_size.dart';
 import 'package:codewave_systems/app/core/shared/controller/app_texts.dart';
 import 'package:codewave_systems/app/modules/home/presentation/pages/home_page.dart';
 import 'package:codewave_systems/app/ui/components/social_media.dart';
@@ -110,7 +111,14 @@ class _HomeFooterSectionState extends State<HomeFooterSection> {
                             height: 35,
                           ),
                           const Gap(24),
-                          const Text('Criando o próximo nível de experiência\ne envolvimento do usuário.'),
+                          const Text(
+                            'Criando o próximo nível de experiência\ne envolvimento do usuário.',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: AppFonts.normal,
+                              color: AppColors.grey_400,
+                            ),
+                          ),
                         ],
                       ),
                       Column(
@@ -126,32 +134,27 @@ class _HomeFooterSectionState extends State<HomeFooterSection> {
                           const Gap(24),
                           FooterItem(
                             text: 'O que fazemos',
-                            offset: context.height - 300,
-                            mobileOffset: context.height,
+                            offset: AppSectionSizes.getWhatWeDoOffset(context),
                           ),
                           const Gap(12),
                           FooterItem(
                             text: 'Valores',
-                            offset: context.height + 300,
-                            mobileOffset: context.height * 2,
+                            offset: AppSectionSizes.getOurValuesOffset(context),
                           ),
                           const Gap(12),
                           FooterItem(
                             text: 'Sobre Nós',
-                            offset: context.height + 1300,
-                            mobileOffset: context.height * 3 + 700,
+                            offset: AppSectionSizes.getAboutUsOffset(context),
                           ),
                           const Gap(12),
                           FooterItem(
                             text: 'Fluxo de Projetos',
-                            offset: context.height + 2300,
-                            mobileOffset: context.height * 4 + 900,
+                            offset: AppSectionSizes.getProjectFlowOffset(context),
                           ),
                           const Gap(12),
                           FooterItem(
                             text: 'Suporte',
-                            offset: context.height + 3100,
-                            mobileOffset: context.height * 5 + 800,
+                            offset: AppSectionSizes.getContactOffset(context),
                           ),
                         ],
                       ),
@@ -228,17 +231,18 @@ class _HomeFooterSectionState extends State<HomeFooterSection> {
           ),
           const Gap(12),
           const Divider(),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 '© CodeWave System 2024. Todos os direitos reservados.',
                 style: TextStyle(
                   color: AppColors.grey_400,
                 ),
-              ),
+                textAlign: TextAlign.center,
+              ).expanded(),
             ],
-          ).pV(24),
+          ).p(24),
         ],
       ),
     );
@@ -246,11 +250,10 @@ class _HomeFooterSectionState extends State<HomeFooterSection> {
 }
 
 class FooterItem extends StatefulWidget {
-  const FooterItem({super.key, required this.text, required this.offset, required this.mobileOffset});
+  const FooterItem({super.key, required this.text, required this.offset});
 
   final String text;
   final double offset;
-  final double mobileOffset;
 
   @override
   State<FooterItem> createState() => _FooterItemState();
@@ -274,7 +277,7 @@ class _FooterItemState extends State<FooterItem> {
       child: GestureDetector(
         onTap: () {
           homeScrollController.animateTo(
-            context.isMobile ? widget.mobileOffset : widget.offset,
+            widget.offset,
             duration: 500.ms,
             curve: Curves.easeInCirc,
           );
