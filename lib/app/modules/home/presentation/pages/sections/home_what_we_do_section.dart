@@ -20,14 +20,6 @@ class HomeWhatWeDoSection extends StatefulWidget {
 }
 
 class _HomeWhatWeDoSectionState extends State<HomeWhatWeDoSection> {
-  final String titleText = AppTexts.whatWeDoTitle;
-  final List<String> texts = [
-    AppTexts.whatWeDoText1,
-    AppTexts.whatWeDoText2,
-    AppTexts.whatWeDoText3,
-    AppTexts.whatWeDoText4,
-  ];
-
   @override
   Widget build(BuildContext context) {
     double margin = 200;
@@ -79,9 +71,9 @@ class _HomeWhatWeDoSectionState extends State<HomeWhatWeDoSection> {
                           ),
                           ConstrainedBox(
                             constraints: const BoxConstraints(maxWidth: 880),
-                            child: AutoSizeText(
-                              titleText,
-                              style: const TextStyle(
+                            child: const AutoSizeText(
+                              AppTexts.whatWeDoTitle,
+                              style: TextStyle(
                                 fontSize: 42,
                                 fontWeight: AppFonts.bold,
                                 color: AppColors.grey_600,
@@ -97,25 +89,25 @@ class _HomeWhatWeDoSectionState extends State<HomeWhatWeDoSection> {
                                 ItemWWD(
                                   withIndicator: true,
                                   right: true,
-                                  text: texts[0],
+                                  text: AppTexts.whatWeDoText1,
                                   margin: margin,
                                 ),
                                 ItemWWD(
                                   withIndicator: true,
                                   right: false,
-                                  text: texts[1],
+                                  text: AppTexts.whatWeDoText2,
                                   margin: margin,
                                 ),
                                 ItemWWD(
                                   withIndicator: true,
                                   right: true,
-                                  text: texts[2],
+                                  text: AppTexts.whatWeDoText3,
                                   margin: margin,
                                 ),
                                 ItemWWD(
                                   withIndicator: false,
                                   right: false,
-                                  text: texts[3],
+                                  text: AppTexts.whatWeDoText4,
                                   margin: margin,
                                 ),
                               ],

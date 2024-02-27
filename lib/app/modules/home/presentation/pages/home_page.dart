@@ -13,9 +13,11 @@ import 'package:codewave_systems/app/modules/home/presentation/pages/sections/ho
 import 'package:codewave_systems/app/modules/home/presentation/pages/sections/home_our_values_section.dart';
 import 'package:codewave_systems/app/modules/home/presentation/pages/sections/home_project_flow_section.dart';
 import 'package:codewave_systems/app/modules/home/presentation/pages/sections/home_what_we_do_section.dart';
+import 'package:codewave_systems/app/ui/components/refresh_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -50,16 +52,16 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  List<Widget> get sections => [
-        const HomeAppBar(),
-        const HomeApresentationSection(),
-        const HomeWhatWeDoSection().pTop(80),
-        const HomeOurValuesSection().pTop(100),
-        const HomeAboutUsSection(),
-        const HomeProjectFlowSection(),
-        const HomeContactSection().pTop(60),
-        const HomeFooterSection(),
-      ];
+  List<Widget> sections = [
+    const HomeAppBar(),
+    const HomeApresentationSection(),
+    const HomeWhatWeDoSection().pTop(80),
+    const HomeOurValuesSection().pTop(100),
+    const HomeAboutUsSection(),
+    const HomeProjectFlowSection(),
+    const HomeContactSection().pTop(60),
+    const HomeFooterSection(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -67,8 +69,34 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: AppColors.blue_100,
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color(0xFF25D366),
-        onPressed: () {
-          //
+        onPressed: () async {
+          String message =
+              'Olá, gostaria de saber mais sobre os serviços oferecidos pela CodeWave Systems. Podemos discutir sobre desenvolvimento de software personalizado? Estou interessado em entender como vocês podem ajudar minha empresa. Obrigado!';
+          String number = '+5547992452912';
+          TargetPlatform platform = Theme.of(context).platform;
+          if (platform == TargetPlatform.linux || platform == TargetPlatform.windows || platform == TargetPlatform.macOS) {
+            launchUrl(
+              Uri.parse(
+                'https://wa.me/$number?text=$message',
+              ),
+              mode: LaunchMode.platformDefault,
+            );
+          } else {
+            var hasZap = await launchUrl(
+              Uri.parse('whatsapp://send?phone=$number&text=$message'),
+              mode: LaunchMode.externalNonBrowserApplication,
+            );
+            if (!hasZap) {
+              launchUrl(
+                Uri.parse(
+                  'https://wa.me/$number?text=$message',
+                ),
+                mode: LaunchMode.inAppBrowserView,
+              );
+            }
+          }
+
+          // }
         },
         child: SvgPicture.memory(
           AppCache.whatsapp,
@@ -88,10 +116,27 @@ class _HomePageState extends State<HomePage> {
             return SizedBox(
               width: context.width,
               height: context.height,
-              child: SingleChildScrollView(
-                controller: homeScrollController,
-                child: Column(
-                  children: sections,
+              child: RefreshPageIndicator(
+                onRefresh: () async {
+                  await Future.delayed(const Duration(milliseconds: 500));
+                  sections = [
+                    const HomeAppBar(),
+                    const HomeApresentationSection(),
+                    const HomeWhatWeDoSection().pTop(80),
+                    const HomeOurValuesSection().pTop(100),
+                    const HomeAboutUsSection(),
+                    const HomeProjectFlowSection(),
+                    const HomeContactSection().pTop(60),
+                    const HomeFooterSection(),
+                  ];
+                  if (mounted) setState(() {});
+                },
+                child: SingleChildScrollView(
+                  physics: const ClampingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                  controller: homeScrollController,
+                  child: Column(
+                    children: sections,
+                  ),
                 ),
               ),
             );
@@ -105,9 +150,26 @@ class _HomePageState extends State<HomePage> {
                   Stack(
                     children: AllDecorations.decorations(context, snapshot.data ?? 0),
                   ),
-                ListView(
-                  controller: homeScrollController,
-                  children: sections,
+                RefreshPageIndicator(
+                  onRefresh: () async {
+                    await Future.delayed(const Duration(milliseconds: 500));
+                    sections = [
+                      const HomeAppBar(),
+                      const HomeApresentationSection(),
+                      const HomeWhatWeDoSection().pTop(80),
+                      const HomeOurValuesSection().pTop(100),
+                      const HomeAboutUsSection(),
+                      const HomeProjectFlowSection(),
+                      const HomeContactSection().pTop(60),
+                      const HomeFooterSection(),
+                    ];
+                    if (mounted) setState(() {});
+                  },
+                  child: ListView(
+                    controller: homeScrollController,
+                    physics: const ClampingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                    children: sections,
+                  ),
                 ),
               ],
             ),

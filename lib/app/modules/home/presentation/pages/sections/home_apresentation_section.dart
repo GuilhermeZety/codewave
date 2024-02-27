@@ -27,10 +27,6 @@ class HomeApresentationSection extends StatefulWidget {
 }
 
 class _HomeApresentationSectionState extends State<HomeApresentationSection> {
-  String titleText = AppTexts.apresentationTitle;
-  String subTitleText = AppTexts.apresentationSubtitle;
-  String buttonText = AppTexts.apresentationButton;
-
   List<String> texts = [
     'Android',
     'IOS',
@@ -117,7 +113,7 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
           Column(
             children: [
               AutoSizeText(
-                titleText,
+                AppTexts.apresentationTitle,
                 style: const TextStyle(
                   fontSize: 42,
                   fontWeight: AppFonts.bold,
@@ -154,7 +150,7 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
             ],
           ),
           AutoSizeText(
-            subTitleText,
+            AppTexts.apresentationSubtitle,
             style: const TextStyle(
               fontSize: 24,
               fontWeight: AppFonts.normal,
@@ -169,7 +165,7 @@ class _HomeApresentationSectionState extends State<HomeApresentationSection> {
                   homeScrollController.animateTo(AppSectionSizes.getContactOffset(context), duration: 700.ms, curve: Curves.easeInOutCirc);
                   descriptionController.text = 'Olá, estou interessado em desenvolver um software personalizado para minha empresa. Aguardo seu retorno para discutirmos detalhes. Obrigado!';
                 },
-                child: Text(buttonText),
+                child: const Text(AppTexts.apresentationButton),
               );
 
               if (isMobile) return button.expandedH();

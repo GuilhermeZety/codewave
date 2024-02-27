@@ -21,8 +21,7 @@ class HomeProjectFlowSection extends StatefulWidget {
 }
 
 class _HomeProjectFlowSectionState extends State<HomeProjectFlowSection> {
-  String titleText = AppTexts.apresentationTitle;
-  static List<Map<String, dynamic>> listCarroussel = [
+  static const List<Map<String, dynamic>> listCarroussel = [
     {
       'number': '1',
       'title': AppTexts.projectFlowCardTitle1,
@@ -96,9 +95,9 @@ class _HomeProjectFlowSectionState extends State<HomeProjectFlowSection> {
             maxLines: 2,
             textAlign: TextAlign.center,
           ),
-          AutoSizeText(
-            titleText,
-            style: const TextStyle(
+          const AutoSizeText(
+            AppTexts.projectFlowTitle,
+            style: TextStyle(
               fontSize: 42,
               fontWeight: AppFonts.bold,
               color: AppColors.grey_600,
@@ -200,29 +199,31 @@ class FlowItem extends StatelessWidget {
               ),
               child: Center(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     AutoSizeText(
                       title,
-                      style: const TextStyle(
-                        fontSize: 22,
+                      style: TextStyle(
+                        fontSize: context.isNotDesktop ? 20 : 22,
                         fontWeight: AppFonts.bold,
                         color: AppColors.grey_800,
                       ),
+                      textAlign: TextAlign.center,
                       maxLines: 1,
-                    ),
-                    const Gap(12),
+                    ).expandedH(),
                     AutoSizeText(
                       text,
                       style: const TextStyle(
-                        fontSize: 18,
+                        fontSize: 16,
                         fontWeight: AppFonts.normal,
                         color: AppColors.grey_400,
                       ),
                       textAlign: TextAlign.center,
-                      maxLines: 2,
-                    ).expanded(),
+                      maxLines: context.width < 550 ? 3 : 2,
+                      minFontSize: 8,
+                    ).expandedH().expanded(),
                   ],
-                ).pV(12).pLeft(60).pRight(24),
+                ).pV(10).pLeft(60).pRight(24),
               ),
             ),
           ),

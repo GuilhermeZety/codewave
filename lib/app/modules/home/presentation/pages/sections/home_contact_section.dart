@@ -82,7 +82,10 @@ class _HomeContactSectionState extends State<HomeContactSection> {
     );
   }
 
-  Future _sendContact() async {}
+  Future _sendContact() async {
+    if (mounted) setState(() {});
+    //
+  }
 
   Widget get _mainContent {
     return Container(

@@ -22,15 +22,6 @@ class HomeAboutUsSection extends StatefulWidget {
 }
 
 class _HomeAboutUsSectionState extends State<HomeAboutUsSection> {
-  final String titleText = AppTexts.aboutUsTitle;
-  final String subtitle = AppTexts.aboutUsSubtitle;
-  final List<String> texts = [
-    AppTexts.aboutUsText1,
-    AppTexts.aboutUsText2,
-    AppTexts.aboutUsText3,
-    AppTexts.aboutUsText4,
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -93,9 +84,9 @@ class _HomeAboutUsSectionState extends State<HomeAboutUsSection> {
         ),
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 880),
-          child: AutoSizeText(
-            titleText,
-            style: const TextStyle(
+          child: const AutoSizeText(
+            AppTexts.aboutUsTitle,
+            style: TextStyle(
               fontSize: 42,
               fontWeight: AppFonts.bold,
               color: AppColors.grey_600,
@@ -107,9 +98,9 @@ class _HomeAboutUsSectionState extends State<HomeAboutUsSection> {
         const Gap(60),
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 700),
-          child: AutoSizeText(
-            subtitle,
-            style: const TextStyle(
+          child: const AutoSizeText(
+            AppTexts.aboutUsSubtitle,
+            style: TextStyle(
               fontSize: 24,
               fontWeight: AppFonts.bold,
               color: AppColors.primary,
@@ -132,24 +123,25 @@ class _HomeAboutUsSectionState extends State<HomeAboutUsSection> {
               const Gap(12),
               Builder(
                 builder: (context) {
-                  Widget w = SeparatedColumn(
-                    separatorBuilder: () => const Gap(24),
-                    children: [
-                      AboutUsBubble(text: texts[0]),
-                      AboutUsBubble(text: texts[0]),
-                      AboutUsBubble(text: texts[0]),
-                      AboutUsBubble(text: texts[0]),
-                      // bubble(texts[1]).pLeft(isNotDesktop ? 0 : 30),
-                      // bubble(texts[2]).pLeft(isNotDesktop ? 0 : 30),
-                      // bubble(texts[3]).pLeft(0),
-                    ],
-                  );
+                  List<Widget> children = const [
+                    AboutUsBubble(text: AppTexts.aboutUsText1),
+                    AboutUsBubble(text: AppTexts.aboutUsText2),
+                    AboutUsBubble(text: AppTexts.aboutUsText3),
+                    AboutUsBubble(text: AppTexts.aboutUsText4),
+                  ];
 
                   if (!isNotDesktop) {
-                    return w.expanded();
+                    return SeparatedColumn(
+                      separatorBuilder: () => const Gap(24),
+                      children: children,
+                    ).expanded();
                   }
-
-                  return w;
+                  children[1] = children[1].pLeft(30);
+                  children[2] = children[2].pLeft(30);
+                  return SeparatedColumn(
+                    separatorBuilder: () => const Gap(24),
+                    children: children,
+                  );
                 },
               ),
             ],

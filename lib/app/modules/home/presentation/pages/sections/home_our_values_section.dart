@@ -19,18 +19,6 @@ class HomeOurValuesSection extends StatefulWidget {
 }
 
 class _HomeOurValuesSectionState extends State<HomeOurValuesSection> {
-  final String titleText = AppTexts.ourValuesTitle;
-  final List<String> titles = [
-    AppTexts.ourValuesTextTitle1,
-    AppTexts.ourValuesTextTitle2,
-    AppTexts.ourValuesTextTitle3,
-  ];
-  final List<String> texts = [
-    AppTexts.ourValuesText1,
-    AppTexts.ourValuesText2,
-    AppTexts.ourValuesText3,
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -69,9 +57,9 @@ class _HomeOurValuesSectionState extends State<HomeOurValuesSection> {
         ),
         ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 880),
-          child: AutoSizeText(
-            titleText,
-            style: const TextStyle(
+          child: const AutoSizeText(
+            AppTexts.ourValuesTitle,
+            style: TextStyle(
               fontSize: 42,
               fontWeight: AppFonts.bold,
               color: AppColors.grey_600,
@@ -115,8 +103,8 @@ class _HomeOurValuesSectionState extends State<HomeOurValuesSection> {
                 builder: (context) {
                   final List<Widget> items = [
                     ItemOur(
-                      title: titles[0],
-                      text: texts[0],
+                      title: AppTexts.ourValuesTextTitle1,
+                      text: AppTexts.ourValuesText1,
                       icon: const Icon(
                         Icons.chat,
                         color: AppColors.white,
@@ -125,8 +113,8 @@ class _HomeOurValuesSectionState extends State<HomeOurValuesSection> {
                       width: width,
                     ),
                     ItemOur(
-                      title: titles[1],
-                      text: texts[1],
+                      title: AppTexts.ourValuesTextTitle2,
+                      text: AppTexts.ourValuesText2,
                       icon: const Icon(
                         Icons.tips_and_updates,
                         color: AppColors.white,
@@ -135,8 +123,8 @@ class _HomeOurValuesSectionState extends State<HomeOurValuesSection> {
                       width: width,
                     ),
                     ItemOur(
-                      title: titles[2],
-                      text: texts[2],
+                      title: AppTexts.ourValuesTextTitle3,
+                      text: AppTexts.ourValuesText3,
                       icon: const Icon(
                         Icons.handshake,
                         color: AppColors.white,

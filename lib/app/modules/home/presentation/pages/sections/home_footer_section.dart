@@ -6,7 +6,6 @@ import 'package:codewave_systems/app/core/common/extensions/context_extension.da
 import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
 import 'package:codewave_systems/app/core/shared/app_cache.dart';
 import 'package:codewave_systems/app/core/shared/app_sections_size.dart';
-import 'package:codewave_systems/app/core/shared/controller/app_texts.dart';
 import 'package:codewave_systems/app/modules/home/presentation/pages/home_page.dart';
 import 'package:codewave_systems/app/ui/components/social_media.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +22,6 @@ class HomeFooterSection extends StatefulWidget {
 }
 
 class _HomeFooterSectionState extends State<HomeFooterSection> {
-  String titleText = AppTexts.apresentationTitle;
-
   TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();

@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:codewave_systems/app/core/common/extensions/widget_extension.dart';
 import 'package:codewave_systems/app/core/shared/app_cache.dart';
+import 'package:codewave_systems/app/core/shared/app_seo.dart';
 import 'package:codewave_systems/app/modules/home/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -21,7 +22,8 @@ class _SlpashPageState extends State<SlpashPage> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Stopwatch watcher = Stopwatch()..start();
-      AppCache.init().then((value) {
+      AppCache.init().then((value) async {
+        await AppSeo.init();
         int time = 1000 - watcher.elapsedMilliseconds;
         Future.delayed(Duration(milliseconds: time < 0 ? 0 : time), () {
           Navigator.pushReplacement(
