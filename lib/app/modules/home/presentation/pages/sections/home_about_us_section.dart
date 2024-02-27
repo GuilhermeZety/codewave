@@ -123,21 +123,21 @@ class _HomeAboutUsSectionState extends State<HomeAboutUsSection> {
               const Gap(12),
               Builder(
                 builder: (context) {
-                  List<Widget> children = const [
-                    AboutUsBubble(text: AppTexts.aboutUsText1),
-                    AboutUsBubble(text: AppTexts.aboutUsText2),
-                    AboutUsBubble(text: AppTexts.aboutUsText3),
-                    AboutUsBubble(text: AppTexts.aboutUsText4),
+                  List<Widget> children = [
+                    const AboutUsBubble(text: AppTexts.aboutUsText1),
+                    const AboutUsBubble(text: AppTexts.aboutUsText2),
+                    const AboutUsBubble(text: AppTexts.aboutUsText3),
+                    const AboutUsBubble(text: AppTexts.aboutUsText4),
                   ];
 
                   if (!isNotDesktop) {
+                    children[1] = children[1].pLeft(30);
+                    children[2] = children[2].pLeft(30);
                     return SeparatedColumn(
                       separatorBuilder: () => const Gap(24),
                       children: children,
                     ).expanded();
                   }
-                  children[1] = children[1].pLeft(30);
-                  children[2] = children[2].pLeft(30);
                   return SeparatedColumn(
                     separatorBuilder: () => const Gap(24),
                     children: children,

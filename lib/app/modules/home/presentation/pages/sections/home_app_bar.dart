@@ -22,6 +22,7 @@ class HomeAppBar extends StatelessWidget {
           width: context.width,
           constraints: const BoxConstraints(maxWidth: maxWidthDesign),
           child: AppBar(
+            centerTitle: false,
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent,
             surfaceTintColor: Colors.transparent,

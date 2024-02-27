@@ -192,7 +192,7 @@ class _HomeFooterSectionState extends State<HomeFooterSection> {
                     ];
                     if (context.isTablet) {
                       return Wrap(
-                        alignment: WrapAlignment.center,
+                        alignment: WrapAlignment.spaceBetween,
                         spacing: 24,
                         runSpacing: 24,
                         children: widgets,
@@ -201,20 +201,21 @@ class _HomeFooterSectionState extends State<HomeFooterSection> {
                     if (context.isMobile) {
                       return Column(
                         children: [
-                          widgets.first,
+                          widgets.first.expandedH(),
                           const Gap(20),
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              widgets[1],
-                              const Gap(40),
-                              widgets[2],
+                              widgets[1].expanded(),
+                              widgets[2].expanded(),
                             ],
                           ),
+                          const Gap(20),
                           widgets[3],
                         ],
-                      );
+                      ).pH(24);
                     }
                     return Row(
                       crossAxisAlignment: CrossAxisAlignment.start,

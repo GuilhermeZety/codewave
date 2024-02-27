@@ -136,8 +136,9 @@ class _HomeContactSectionState extends State<HomeContactSection> {
                             color: AppColors.grey_200,
                           ),
                           const Gap(10),
-                          Input.numeric(
+                          Input(
                             emailController,
+                            keyboard: TextInputType.emailAddress,
                             label: 'Email:',
                             onChange: (p0) {
                               if (mounted) setState(() {});
@@ -145,18 +146,20 @@ class _HomeContactSectionState extends State<HomeContactSection> {
                             hint: 'Insira o seu email para contato futuro',
                           ).expandedH(),
                           const Gap(8),
-                          Input.numeric(
+                          Input(
                             nameController,
                             label: 'Nome:',
+                            keyboard: TextInputType.name,
                             onChange: (p0) {
                               if (mounted) setState(() {});
                             },
                             hint: 'Insira o seu nome :)',
                           ).expandedH(),
                           const Gap(8),
-                          Input.numeric(
+                          Input(
                             descriptionController,
                             label: 'Motivo do contato:',
+                            keyboard: TextInputType.multiline,
                             onChange: (p0) {
                               if (mounted) setState(() {});
                             },

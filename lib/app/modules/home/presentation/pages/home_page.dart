@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () async {
           String message =
               'Olá, gostaria de saber mais sobre os serviços oferecidos pela CodeWave Systems. Podemos discutir sobre desenvolvimento de software personalizado? Estou interessado em entender como vocês podem ajudar minha empresa. Obrigado!';
-          String number = '+5547992452912';
+          String number = '+5547992644734';
           TargetPlatform platform = Theme.of(context).platform;
           if (platform == TargetPlatform.linux || platform == TargetPlatform.windows || platform == TargetPlatform.macOS) {
             launchUrl(
